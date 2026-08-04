@@ -72,17 +72,17 @@ export function AdsHome1() {
               
               {/* Limited offer badge - أصغر */}
               <div className="inline-block">
-                <p className="text-[8px] md:text-[16px] font-semibold px-1.5 py-0.5 md:px-4 md:py-1.5 bg-[#C092BD]/10 text-[#C092BD] rounded-full inline-block">
+                <p className="text-[8px] md:text-[16px] font-semibold px-1.5 py-0.5 md:px-4 md:py-1.5 bg-[#23A6F0]/10 text-[#23A6F0] rounded-full inline-block">
                   لفترة محدودة
                 </p>
               </div>
               
               {/* Discount badge - أصغر */}
               <div className="mt-1 md:mt-6">
-                <p className="text-[14px] md:text-[48px] font-bold text-[#C092BD]">
+                <p className="text-[14px] md:text-[48px] font-bold text-[#23A6F0]">
                   خصم 50%
                 </p>
-                <div className="w-10 md:w-20 h-0.5 md:h-1 bg-[#C092BD] rounded-full mt-0.5 md:mt-2 mx-auto md:mx-0"></div>
+                <div className="w-10 md:w-20 h-0.5 md:h-1 bg-[#23A6F0] rounded-full mt-0.5 md:mt-2 mx-auto md:mx-0"></div>
               </div>
               
               {/* Description - أصغر */}
@@ -99,7 +99,7 @@ export function AdsHome1() {
                 className="rounded-xl
                  mt-2 md:mt-8 w-full sm:w-auto px-3 md:px-10 mb-2 md:mb-0 py-1 
                  md:py-6 text-[8px] md:text-[18px] font-bold hover:scale-105 transition-all duration-300 shadow-lg"
-                style={{ backgroundColor: '#C092BD' }}
+                style={{ backgroundColor: '#23A6F0' }}
               >
                 <Link href="#" className="flex items-center justify-center gap-1 md:gap-2 text-white">
                   تسوق الان

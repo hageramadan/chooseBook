@@ -614,7 +614,7 @@ const getMaxQuantity = (): number => {
   const cleanImageUrl = (url: string) => {
     if (!url) return "/images/placeholder.jpg";
     if (url.startsWith("/storage")) {
-      return `https://education.admin.t-carts.com${url}`;
+      return `https://alfareed.admin.t-carts.com${url}`;
     }
     return url;
   };
@@ -702,7 +702,7 @@ const getMaxQuantity = (): number => {
                 />
 
                 {discountPercentage > 0 && (
-                  <span className="absolute top-2 right-2 bg-[#C092BD] text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full z-10">
+                  <span className="absolute top-2 right-2 bg-[#23A6F0] text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full z-10">
                     {discountPercentage}% {t("product.discount")}
                   </span>
                 )}
@@ -741,7 +741,7 @@ const getMaxQuantity = (): number => {
                   className={`
                     relative aspect-[4/3] max-h-[80px] bg-gray-100 rounded-[8px] overflow-hidden
                     border-2 transition-all duration-200
-                    ${selectedImage === index ? "border-[#C092BD]" : "border-transparent hover:border-gray-300"}
+                    ${selectedImage === index ? "border-[#23A6F0]" : "border-transparent hover:border-gray-300"}
                   `}
                 >
                   <Image
@@ -762,7 +762,7 @@ const getMaxQuantity = (): number => {
             <div className="text-center text-sm text-gray-500 py-2">
               <button
                 onClick={hideVideoPlayer}
-                className="text-[#C092BD] hover:underline font-medium"
+                className="text-[#23A6F0] hover:underline font-medium"
               >
                 {t("product.backToImages")}
               </button>
@@ -784,7 +784,7 @@ const getMaxQuantity = (): number => {
             </div>
 
             <div className="flex flex-col items-end">
-              <span className="text-lg lg:text-xl font-bold text-[#C092BD] flex items-center gap-0.5">
+              <span className="text-lg lg:text-xl font-bold text-[#23A6F0] flex items-center gap-0.5">
                 {currentPrice.toLocaleString()}
                 <span className="text-sm">{getCurrencySymbol()}</span>
               </span>
@@ -959,7 +959,7 @@ const getMaxQuantity = (): number => {
                 (product.has_variants && !selectedVariant)
               }
               className={`flex-1 text-sm text-white px-4 py-2 rounded-[8px] font-bold flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300
-                ${isAvailable ? 'bg-[#C092BD] hover:bg-[#C092BD]' : 'bg-gray-400 cursor-not-allowed'}
+                ${isAvailable ? 'bg-[#23A6F0] hover:bg-[#4bb1ec]' : 'bg-gray-400 cursor-not-allowed'}
               `}
             >
               {isAddingToCart ? (
@@ -977,17 +977,17 @@ const getMaxQuantity = (): number => {
                 onClick={handleToggleFavorite}
                 disabled={isMutating}
                 className={`
-                  flex-1 py-2 rounded-[8px] text-[#C092BD] font-bold transition-all duration-300 flex items-center justify-center gap-2 text-xs
+                  flex-1 py-2 rounded-[8px] text-[#23A6F0] font-bold transition-all duration-300 flex items-center justify-center gap-2 text-xs
                   ${
                     isProductFavorite
                       ? "bg-red-50 text-red-600 border border-red-200 hover:bg-red-100"
-                      : "border border-[#C092BD] hover:bg-[#ff89e13f]"
+                      : "border border-[#23A6F0] hover:bg-[#4bb1ec7e]"
                   }
                   disabled:opacity-50 disabled:cursor-not-allowed
                 `}
               >
                 <Heart
-                  className={`h-3.5 w-3.5 ${isProductFavorite?'text-[#ef4444]':'text-[#C092BD]'}`}
+                  className={`h-3.5 w-3.5 ${isProductFavorite?'text-[#ef4444]':'text-[#23A6F0]'}`}
                   fill={isProductFavorite ? "#ef4444" : "none"}
                 />
                 {isProductFavorite ? t("product.inFavorites") : t("product.addToFavorites")}
@@ -1005,7 +1005,7 @@ const getMaxQuantity = (): number => {
                 className="flex justify-between items-center w-full py-1.5 text-right"
               >
                 <span className="font-semibold text-gray-800 flex items-center gap-1.5 text-sm">
-                  <Info className="w-3.5 h-3.5 text-[#C092BD]" />
+                  <Info className="w-3.5 h-3.5 text-[#23A6F0]" />
                   {t("product.productInfo")}
                 </span>
                 <span className="text-lg">

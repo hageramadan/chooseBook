@@ -30,7 +30,7 @@ const transformProductData = (apiProduct: ProductData, t: any) => {
   const cleanImageUrl = (url: string) => {
     if (!url) return "/images/placeholder.jpg";
     if (url.startsWith("/storage")) {
-      return `https://education.admin.t-carts.com${url}`;
+      return `https://alfareed.admin.t-carts.com${url}`;
     }
     return url;
   };
@@ -40,7 +40,7 @@ const transformProductData = (apiProduct: ProductData, t: any) => {
   
   // إذا لم يكن هناك ألوان، أضف ألوان افتراضية حسب اللغة
   const finalColors = colors.length > 0 ? colors : [
-    { name: t("product.defaultColors.red"), code: "#C092BD" },
+    { name: t("product.defaultColors.red"), code: "#23A6F0" },
     { name: t("product.defaultColors.blue"), code: "#252B42" },
     { name: t("product.defaultColors.green"), code: "#23856D" },
   ];
@@ -140,7 +140,7 @@ export default function ProductPage({ params }: { params: Promise<{ id: string }
         {/* <p className="text-red-500 text-xl mb-4">{error || t("product.notFound")}</p> */}
         <button 
           onClick={() => window.location.href = '/'}
-          className="bg-[#C092BD] hover:bg-[#C092BD] text-white px-6 py-2 rounded-[8px]"
+          className="bg-[#23A6F0] hover:bg-[#23A6F0] text-white px-6 py-2 rounded-[8px]"
         >
           {t("product.backToHome")}
         </button>

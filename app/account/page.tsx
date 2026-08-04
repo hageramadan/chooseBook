@@ -42,7 +42,7 @@ export default function AccountPage() {
     }
     
     // إذا كان مسارًا نسبيًا
-    return `https://education.admin.t-carts.com${imagePath}`;
+    return `https://alfareed.admin.t-carts.com${imagePath}`;
   };
 
   // دالة لجلب رصيد المحفظة من الـ API
@@ -58,7 +58,7 @@ export default function AccountPage() {
         return;
       }
 
-      const apiUrl = "https://education.admin.t-carts.com/api";
+      const apiUrl = "https://alfareed.admin.t-carts.com/api";
       const response = await fetch(`${apiUrl}/wallet`, {
         method: "GET",
         headers: getHeaders(),
@@ -159,7 +159,7 @@ export default function AccountPage() {
     return (
       <div className="min-h-screen bg-gradient-to-l from-[#bdcbf12a] to-[#feecea3b] flex items-center justify-center">
         <div className="text-center">
-          <div className="w-12 h-12 border-4 border-gray-300 border-t-[#C092BD] rounded-full animate-spin mx-auto mb-4"></div>
+          <div className="w-12 h-12 border-4 border-gray-300 border-t-[#23A6F0] rounded-full animate-spin mx-auto mb-4"></div>
           <p className="text-gray-600">{t('account.loading')}</p>
         </div>
       </div>
@@ -220,7 +220,7 @@ export default function AccountPage() {
                     onError={() => {}}
                   />
                 ) : (
-                  <div className="h-16 w-16 md:w-24 md:h-24 rounded-full bg-gradient-to-br from-[#ff6b6b] to-[#C092BD] flex items-center justify-center shadow-lg">
+                  <div className="h-16 w-16 md:w-24 md:h-24 rounded-full bg-gradient-to-br from-[#ff6b6b] to-[#23A6F0] flex items-center justify-center shadow-lg">
                     <span className="text-white text-base md:text-2xl font-bold">
                       {getUserInitial()}
                     </span>

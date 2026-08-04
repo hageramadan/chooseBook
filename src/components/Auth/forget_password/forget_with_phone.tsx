@@ -82,17 +82,7 @@ export default function ForgotWithPhone() {
 
   return (
     <>
-      {/* <Toaster
-        position="top-center"
-        toastOptions={{
-          style: {
-            fontSize: "14px",
-            padding: "12px 16px",
-            borderRadius: "8px",
-            direction: "rtl",
-          },
-        }}
-      /> */}
+      
 
       <div className=" page-with-padding bg-gradient-to-l from-[#bdcbf12a] to-[#feecea3b] flex items-center justify-center">
         <div className="container mx-auto px-4 py-6 md:py-12">
@@ -125,7 +115,7 @@ export default function ForgotWithPhone() {
                       value={digit}
                       onChange={(e) => handleOtpChange(index, e.target.value)}
                       onKeyDown={(e) => handleKeyDown(index, e)}
-                      className="w-12 h-12 md:w-14 md:h-14 text-center text-xl font-bold border-2 border-gray-300 rounded-xl focus:border-[#C092BD] focus:ring-2 focus:ring-[#C092BD]/20 outline-none transition-all"
+                      className="w-12 h-12 md:w-14 md:h-14 text-center text-xl font-bold border-2 border-gray-300 rounded-xl focus:border-[#23A6F0] focus:ring-2 focus:ring-[#23A6F0]/20 outline-none transition-all"
                       maxLength={1}
                       
                     />
@@ -137,7 +127,7 @@ export default function ForgotWithPhone() {
                   {!canResend ? (
                     <p className="text-gray-500 text-sm">
                       لم تستلم الرمز؟{" "}
-                      <span className="text-[#C092BD] font-medium">
+                      <span className="text-[#23A6F0] font-medium">
                         إعادة الإرسال ({timeLeft.toString().padStart(2, "0")})
                       </span>
                     </p>
@@ -145,7 +135,7 @@ export default function ForgotWithPhone() {
                     <button
                       type="button"
                       onClick={handleResendCode}
-                      className="text-[#C092BD] font-medium hover:underline"
+                      className="text-[#23A6F0] font-medium hover:underline"
                     >
                       لم تستلم الرمز؟ إعادة إرسال
                     </button>

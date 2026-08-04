@@ -14,7 +14,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { useCurrency } from "@/hooks/useCurrency"; // ✅ استيراد useCurrency
+import { useCurrency } from "@/hooks/useCurrency";
 
 interface ColorOption {
   color: string;
@@ -38,7 +38,6 @@ interface ProductCardProps {
   hasVariants?: boolean;
   variants?: Array<{ id: number }>;
   quantity?: number | null;
-  // ❌ إزالة currency من الـ Props
 }
 
 // دالة للحصول على الترجمات حسب اللغة
@@ -170,11 +169,16 @@ export function ProductCard({
     setIsLocalMutating(false);
   }, [id, localFavorite, isLocalMutating, isLoading, toggleFavorite, isAuthenticated, router, t]);
 
+ const handleQuickView = useCallback((e: React.MouseEvent) => {
+  e.preventDefault();
+  e.stopPropagation();
+  // الانتقال إلى صفحة تفاصيل المنتج
+  router.push(href);
+}, [href, router]);
   const handleAddToCart = useCallback(async (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
     
-    // ✅ التحقق من الكمية قبل الإضافة
     if (isOutOfStock) {
       toast.error(t.productUnavailable, {
         duration: 3000,
@@ -186,7 +190,7 @@ export function ProductCard({
     if (isAddingToCart || cartLoading) return;
     
     const productId = parseInt(id);
-    const quantityToAdd = 1; // يمكن تعديلها حسب الحاجة
+    const quantityToAdd = 1;
     
     if (hasVariants && variants.length > 0) {
       const firstVariantId = variants[0].id;
@@ -194,10 +198,6 @@ export function ProductCard({
       setIsAddingToCart(true);
       try {
         await addItem(productId, quantityToAdd, firstVariantId);
-        // toast.success(t.addedToCart, {
-        //   duration: 3000,
-        //   position: "top-center",
-        // });
       } catch (error) {
         console.error("❌ Error adding to cart:", error);
         toast.error(t.errorAddingToCart, {
@@ -214,10 +214,6 @@ export function ProductCard({
     try {
       const finalVariantId = variantId || null;
       await addItem(productId, quantityToAdd, finalVariantId);
-      // toast.success(t.addedToCart, {
-      //   duration: 3000,
-      //   position: "top-center",
-      // });
     } catch (error) {
       console.error("❌ Error adding to cart:", error);
       toast.error(t.errorAddingToCart, {
@@ -245,14 +241,12 @@ export function ProductCard({
     <div
       role="article"
       aria-labelledby={`product-name-${id}`}
-      className="group w-full max-w-[340px] sm:max-w-[350px] md:max-w-[308px] lg:max-w-[308px] mx-auto h-auto relative bg-white transition-all duration-500 ease-out hover:shadow-2xl"
+      className="group w-full max-w-[340px] sm:max-w-[350px] md:max-w-[308px] lg:max-w-[308px] mx-auto h-auto relative bg-white transition-all duration-300 hover:shadow-lg"
       style={{
-        borderRadius: '16px',
-        border: '1px solid #E4E7E9',
-        padding: '0 0px 16px 0',
+        borderRadius: '12px',
+        border: '1px solid #e2e8f0',
+        padding: '16px 0',
         overflow: 'hidden',
-        transform: isHovered ? 'translateY(-12px)' : 'translateY(0px)',
-        transition: 'transform 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1), box-shadow 0.4s ease',
       }}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
@@ -260,31 +254,32 @@ export function ProductCard({
       <Link href={href} className="block h-full" aria-label={`عرض تفاصيل ${name}`}>
         {/* Image Container */}
         <div 
-          className="relative mx-auto transition-all duration-500 w-full"
+          className="relative mx-auto transition-colors duration-300"
           style={{
-            borderRadius: '5px',
+            borderRadius: '8px',
+            padding: '0 16px',
           }}
         >
-          {/* Heart Icon - Top Left Corner */}
+          {/* Heart Icon - Top Left Corner (موجود في الموبايل ومخفي في الديسكتوب) */}
           <button
             onClick={handleFavoriteClick}
             disabled={isLocalMutating || isLoading}
-            className="absolute top-1 left-2 z-10 rounded-full p-1.5 bg-white shadow hover:bg-red-50 transition-all duration-200 hover:scale-110"
+            className="block md:hidden absolute top-1 left-2 z-10 bg-white rounded-full p-1.5 shadow-md hover:bg-red-50 transition-all duration-200 hover:scale-110"
             style={{ color: localFavorite ? '#ef4444' : '#112B40' }}
             aria-label={localFavorite ? t.removeFromFavorites : t.addToFavorites}
             aria-pressed={localFavorite}
           >
             {isLocalMutating ? (
-              <div className="w-4 h-4 border-2 border-[#C092BD] border-t-transparent rounded-full animate-spin" />
+              <div className="w-4 h-4 border-2 border-[#23A6F0] border-t-transparent rounded-full animate-spin" />
             ) : (
-              <Heart className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6" fill={localFavorite ? '#ef4444' : 'none'} />
+              <Heart className="h-4 w-4" fill={localFavorite ? '#ef4444' : 'none'} />
             )}
           </button>
-          
+
           {/* Best Seller Badge */}
           {isBestSeller && (
-            <div className="absolute top-2 right-2 z-10">
-              <p className="text-[9px] sm:text-xs font-bold text-white bg-[#08B2A7] px-1.5 py-0.5 sm:px-2 sm:py-1 rounded">
+            <div className="absolute top-2 right-4 z-10">
+              <p className="text-[9px] sm:text-xs font-bold text-white bg-[#23A6F0] px-1.5 py-0.5 sm:px-2 sm:py-1 rounded">
                 {t.bestSeller}
               </p>
             </div>
@@ -292,107 +287,126 @@ export function ProductCard({
 
           {/* Discount Badge */}
           {discount && discount > 0 && (
-            <div className="absolute top-10 right-2 z-10">
+            <div className="absolute top-10 right-4 z-10">
               <p className="text-[9px] sm:text-xs font-bold text-white bg-red-500 px-1.5 py-0.5 sm:px-2 sm:py-1 rounded">
                 {discount}% OFF
               </p>
             </div>
           )}
 
-          {/* Image with scale effect on hover */}
-          <div className="overflow-hidden rounded-t-lg">
+          <div className="relative w-full aspect-square">
             {!imageLoaded && (
-              <div className="absolute inset-0 flex items-center justify-center bg-gray-100 rounded-t-lg">
-                <div className="w-8 h-8 border-4 border-[#C092BD] border-t-transparent rounded-full animate-spin" />
+              <div className="absolute inset-0 flex items-center justify-center bg-gray-100 rounded-lg">
+                <div className="w-8 h-8 border-4 border-[#23A6F0] border-t-transparent rounded-full animate-spin" />
               </div>
             )}
             <Image
               src={currentImage}
               alt={name}
-              width={340}
-              height={340}
-              className="object-cover w-full h-auto aspect-square transition-transform duration-500 ease-out group-hover:scale-105"
-              style={{
-                transform: isHovered ? 'scale(1.05)' : 'scale(1)',
-              }}
+              fill
+              className="object-contain transition-transform duration-300 group-hover:scale-105"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               onLoad={() => setImageLoaded(true)}
+              onError={(e) => {
+                const target = e.target as HTMLImageElement;
+                target.src = "/images/products/placeholder.png";
+              }}
             />
           </div>
+
+          {/* الطبقة المظللة التي تظهر عند hover */}
+          {isHovered && (
+            <div 
+              className="absolute inset-0 rounded-lg transition-colors duration-300 pointer-events-none"
+              style={{ backgroundColor: '#0000001A' }}
+            />
+          )}
+
+          {/* Icons Overlay - appears at bottom center on hover */}
+          {isHovered && (
+            <div className="absolute bottom-3 left-0 right-0 justify-center -translate-y-1/2 flex gap-2 animate-in fade-in zoom-in-95 pointer-events-auto px-4">
+              {/* Eye Icon - Quick View */}
+              <button
+                onClick={handleQuickView}
+                className="bg-white rounded-full p-2 shadow-lg hover:bg-[#23A6F0] transition-all duration-200 hover:scale-110"
+                style={{ color: '#112B40' }}
+                aria-label="معاينة سريعة"
+              >
+                <Eye className="h-4 w-4 sm:h-5 sm:w-5 hover:text-white" />
+              </button>
+
+              {/* Shopping Cart Icon - Add to Cart */}
+              <button
+                onClick={handleAddToCart}
+                disabled={isOutOfStock || isAddingToCart || cartLoading}
+                className="bg-white rounded-full p-2 shadow-lg hover:bg-[#23A6F0] transition-all duration-200 hover:scale-110"
+                style={{ color: isOutOfStock ? '#999' : '#112B40' }}
+                aria-label={isOutOfStock ? t.outOfStock : t.addToCart}
+              >
+                {isAddingToCart || cartLoading ? (
+                  <div className="h-4 w-4 sm:h-5 sm:w-5 border-2 border-[#23A6F0] border-t-transparent rounded-full animate-spin" />
+                ) : (
+                  <ShoppingCart className="h-4 w-4 sm:h-5 sm:w-5 hover:text-white" />
+                )}
+              </button>
+
+              {/* Heart Icon - Add to Favorites (يظهر فقط في الديسكتوب) */}
+              <button
+                onClick={handleFavoriteClick}
+                disabled={isLocalMutating || isLoading}
+                className="bg-white md:block hidden rounded-full p-2 shadow-lg hover:bg-[#23A6F0] transition-all duration-200 hover:scale-110"
+                style={{ color: localFavorite ? '#ef4444' : '#112B40' }}
+                aria-label={localFavorite ? t.removeFromFavorites : t.addToFavorites}
+              >
+                {isLocalMutating ? (
+                  <div className="h-4 w-4 sm:h-5 sm:w-5 border-2 border-[#23A6F0] border-t-transparent rounded-full animate-spin" />
+                ) : (
+                  <Heart className="h-4 w-4 sm:h-5 sm:w-5 hover:text-white" fill={localFavorite ? '#ef4444' : 'none'} />
+                )}
+              </button>
+            </div>
+          )}
         </div>
 
-        {/* Product Info with slide up effect */}
-        <div 
-          className="px-2 sm:px-3 flex flex-col gap-1 sm:gap-2 mt-2 transition-all duration-500 ease-out"
-          style={{
-            transform: isHovered ? 'translateY(-4px)' : 'translateY(0px)',
-          }}
-        >
+        {/* Product Info */}
+        <div className="px-4 mt-3">
           {/* Rating Section */}
-          <div className="flex gap-1 items-center mb-1 flex-wrap">
-            <p className="text-[#77878F] text-[10px] sm:text-xs md:text-sm">({reviewsCount || 0})</p>
+          {/* <div className="flex items-center gap-1 mb-1">
             <div className="flex gap-0.5">
               {renderStars(rating)}
             </div>
-          </div>
-          
+            <p className="text-[#77878F] text-[10px] sm:text-xs md:text-sm">({reviewsCount || 0})</p>
+          </div> */}
+
           {/* Product Name */}
           <h3 
             id={`product-name-${id}`}
-            className="text-[11px] sm:text-[13px] md:text-[14px] font-medium line-clamp-2 lg:line-clamp-1 mb-1" 
+            className="text-[16px] font-medium line-clamp-2 mb-1" 
             style={{ color: '#112B40' }}
           >
             {name}
           </h3>
 
-          {/* Price - ✅ استخدام العملة من الـ Hook */}
-          <div className="flex items-center gap-2 mb-2">
+          {/* Price */}
+          <div className="flex items-center gap-2">
             {originalPrice && originalPrice > price ? (
               <>
-                <span className="text-sm sm:text-base md:text-[17px] font-semibold" style={{ color: '#08B2A7' }}>
-                  {price.toLocaleString()}{' '}
-                  <span className="text-[10px] sm:text-xs md:text-[12px] font-semibold">
+                <span className="text-lg font-bold relative" style={{ color: '#23A6F0' }}>
+                  {price.toLocaleString()} <span className="text-xs absolute top-1 me-1">
                     {currencyLoading ? '...' : currency || 'EGP'}
                   </span>
                 </span>
-                <span className="text-[10px] sm:text-xs md:text-[12px] text-gray-400 line-through">
+                <span className="text-sm text-gray-400 line-through">
                   {originalPrice.toLocaleString()}
                 </span>
               </>
             ) : (
-              <span className="text-sm sm:text-base md:text-[17px] font-semibold" style={{ color: '#08B2A7' }}>
-                {price.toLocaleString()}{' '}
-                <span className="text-[10px] sm:text-xs md:text-[12px] font-semibold">
+              <span className="text-lg font-bold relative" style={{ color: '#23A6F0' }}>
+                {price.toLocaleString()} <span className="text-xs absolute top-1 me-1">
                   {currencyLoading ? '...' : currency || 'EGP'}
                 </span>
               </span>
             )}
-          </div>
-          
-          {/* Add to cart button */}
-          <div
-            style={{
-              opacity: isHovered ? 1 : 0.9,
-              transition: 'opacity 0.3s ease 0.1s',
-            }}
-          >
-            <button
-              onClick={handleAddToCart}
-              disabled={isOutOfStock || isAddingToCart || cartLoading}
-              className={`w-full text-[11px] sm:text-[14px] md:text-[16px] font-semibold rounded-[24px] transition-all duration-300 text-white py-1.5 sm:py-2 md:py-2.5 px-4 border-2 flex items-center justify-center gap-2 hover:scale-[1.02] h-auto ${
-                isOutOfStock 
-                  ? 'bg-gray-400 border-gray-400 cursor-not-allowed' 
-                  : 'bg-[#C092BD] hover:bg-[#8C6D8A] border-[#C092BD] hover:border-[#8C6D8A]'
-              }`}
-            >
-              {isAddingToCart || cartLoading ? (
-                <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-              ) : (
-                <>
-                  <ShoppingCart className="h-3.5 w-3.5 sm:h-4 sm:w-4 md:h-5 md:w-5" />
-                  <span>{isOutOfStock ? t.outOfStock : t.addToCart}</span>
-                </>
-              )}
-            </button>
           </div>
         </div>
       </Link>

@@ -114,7 +114,7 @@ export default function CheckoutForm({
         className={`w-full md:mb-4 text-white py-3  rounded-[8px]  font-semibold text-lg transition ${
           isSubmitting || !formData.deliveryMethod
             ? "bg-gray-400 cursor-not-allowed opacity-70"
-            : "bg-[#C092BD] hover:bg-[#C092BD]"
+            : "bg-[#23A6F0] hover:bg-[#23A6F0]"
         }`}
       >
         {isSubmitting ? (

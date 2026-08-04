@@ -2,22 +2,23 @@
 
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
-import { Card, CardContent } from "@/components/ui/card";
+import { useEffect, useState, useCallback, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { FaArrowLeftLong } from "react-icons/fa6";
+import { FaArrowRightLong } from "react-icons/fa6";
 import { getCategories } from "@/services/api";
 
 interface CategoriesSectionProps {
   onLoad?: () => void;
 }
-interface Category {
-  id: string;
-  name: string;
-  image: string;
-  href: string;
-}
+
+
 export function CategoriesSection({ onLoad }: CategoriesSectionProps) {
+  const sliderRef = useRef<HTMLDivElement>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollStart, setScrollStart] = useState(0);
   const [categories, setCategories] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -50,31 +51,95 @@ export function CategoriesSection({ onLoad }: CategoriesSectionProps) {
     loadCategories();
   }, [loadCategories]);
 
-  // توزيع التصنيفات على الـ grid حسب الترتيب المطلوب
-  const getCategoryLayout = (index: number, category: Category) => {
-    if (index === 0) return { colSpan: "lg:col-span-1", rowSpan: "" };
-    if (index === 1) return { colSpan: "lg:col-span-2", rowSpan: "row-span-1" };
-    if (index === 2) return { colSpan: "lg:col-span-1", rowSpan: "row-span-1" };
-    if (index === 3) return { colSpan: "lg:col-span-2", rowSpan: "" };
-    if (index === 4) return { colSpan: "lg:col-span-2", rowSpan: "" };
-    return { colSpan: "lg:col-span-1", rowSpan: "" };
+  // دوال السحب
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (!sliderRef.current) return;
+    setIsDragging(true);
+    setStartX(e.pageX);
+    setScrollStart(sliderRef.current.scrollLeft);
+    sliderRef.current.style.cursor = 'grabbing';
+    sliderRef.current.style.userSelect = 'none';
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    if (!sliderRef.current) return;
+    setIsDragging(true);
+    setStartX(e.touches[0].pageX);
+    setScrollStart(sliderRef.current.scrollLeft);
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging || !sliderRef.current) return;
+    e.preventDefault();
+    const x = e.pageX;
+    const walk = (x - startX) * 1.5;
+    sliderRef.current.scrollLeft = scrollStart - walk;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (!isDragging || !sliderRef.current) return;
+    const x = e.touches[0].pageX;
+    const walk = (x - startX) * 1.5;
+    sliderRef.current.scrollLeft = scrollStart - walk;
+  };
+
+  const handleDragEnd = () => {
+    setIsDragging(false);
+    if (sliderRef.current) {
+      sliderRef.current.style.cursor = 'grab';
+      sliderRef.current.style.userSelect = 'auto';
+    }
+  };
+
+  // دوال أزرار التحريك
+  const scroll = (direction: 'left' | 'right') => {
+    if (!sliderRef.current) return;
+    const scrollAmount = direction === 'left' ? -300 : 300;
+    sliderRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
   };
 
   // بناء رابط الصورة الكامل
   const getFullImageUrl = (imagePath: string) => {
     if (!imagePath) return "/images/categories/placeholder.jpg";
     if (imagePath.startsWith('/storage')) {
-      return `https://education.admin.t-carts.com${imagePath}`;
+      return `https://alfareed.admin.t-carts.com${imagePath}`;
     }
     return imagePath;
   };
 
+  // دالة للحصول على صورة ثابتة لكل قسم بناءً على الاسم (كإحتياطي)
+  const getCategoryImage = (categoryName: string, categoryImage?: string): string => {
+    // إذا كانت الصورة موجودة في البيانات
+    if (categoryImage) {
+      return getFullImageUrl(categoryImage);
+    }
+
+    // تعيين صور مختلفة حسب اسم القسم (إحتياطي)
+    const imageMap: { [key: string]: string } = {
+      'الإلكترونيات': '/images/categories/cate1.png',
+      'الهواتف الذكية': '/images/categories/cate1.png',
+      'أجهزة اللابتوب': '/images/categories/cat2.png',
+      'الكمبيوتر': '/images/categories/cat2.png',
+      'اكسسوارات': '/images/categories/cate3.png',
+      'سماعات': '/images/categories/cate4.png',
+    };
+
+    // البحث عن الصورة المناسبة
+    for (const [key, value] of Object.entries(imageMap)) {
+      if (categoryName.includes(key)) {
+        return value;
+      }
+    }
+    
+    // صورة افتراضية إذا لم يتم العثور على تطابق
+    return '/images/categories/placeholder.jpg';
+  };
+
   if (loading) {
     return (
-      <section className="py-8 container mx-auto px-4" style={{ minHeight: '816px' }}>
-        {/* <h2 className="text-3xl font-bold text-center mb-12 text-[#112B40]">اختر حسب الفئة</h2> */}
+      <section className="py-8 container mx-auto px-4">
         <div className="flex justify-center items-center h-64">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#C092BD]"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#23A6F0]"></div>
         </div>
       </section>
     );
@@ -95,47 +160,108 @@ export function CategoriesSection({ onLoad }: CategoriesSectionProps) {
       setIsDataLoaded(true);
       onLoad();
     }
-    return null;
+    return (
+      <></>
+    );
   }
 
   return (
-    <section className="py-8 container mx-auto px-4" style={{ minHeight: '816px' }}>
-      {/* <h2 className="text-3xl font-bold text-center mb-12 text-[#112B40]">اختر حسب الفئة</h2> */}
-      
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6 auto-rows-[400px]">
-        {categories.slice(0, 5).map((category, index) => {
-          const layout = getCategoryLayout(index, category);
-          return (
-            <Link 
-              key={category.id}
-              href={`/products?categories=[${category.id}]`} 
-              className={`${layout.colSpan} ${layout.rowSpan} block group`}
-            >
-              <div className="relative h-full w-full overflow-hidden rounded-2xl shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-3">
-                <Image
-                  src={getFullImageUrl(category.image)}
-                  alt={category.name}
-                  fill
-                  className="object-cover transition-all duration-500 group-hover:scale-105"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.src = "/images/categories/placeholder.jpg";
-                  }}
-                />
-                
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-70 group-hover:opacity-100 transition-opacity duration-500" />
-                
-                <div className="absolute bottom-0 left-0 right-0 p-6">
-                  <h3 className="text-white text-2xl font-bold text-center transform translate-y-0 group-hover:translate-y-[-8px] transition-transform duration-500">
-                    {category.name}
-                  </h3>
-                </div>
+    <section className="py-2 md:py-8">
+      <div className="container mx-auto px-4 sm:px-6 relative">
+        
+        {/* زر السهم الأيمن */}
+        <button
+          onClick={() => scroll('right')}
+          className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-[#23A6F0] rounded-full shadow-lg p-2 md:p-3 hover:bg-[#1f98df] transition-all duration-300 hidden md:block"
+          style={{ 
+            boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+            transform: 'translateX(50%) translateY(-50%)'
+          }}
+          aria-label="التمرير لليسار"
+        >
+          <FaArrowRightLong className="text-white" size={16} />
+        </button>
+
+        {/* زر السهم الأيسر */}
+        <button
+          onClick={() => scroll('left')}
+          className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-[#23A6F0] rounded-full shadow-lg p-2 md:p-3 hover:bg-[#1f98df] transition-all duration-300 hidden md:block"
+          style={{ 
+            boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+            transform: 'translateX(-50%) translateY(-50%)'
+          }}
+          aria-label="التمرير لليمين"
+        >
+          <FaArrowLeftLong className="text-white" size={16} />
+        </button>
+
+        {/* حاوية السحب الأفقية */}
+        <div 
+          ref={sliderRef}
+          className="overflow-x-auto h-[100px] md:h-[236px] pt-4 md:pt-8 hide-scrollbar"
+          style={{ 
+            width: '100%',
+            overflowY: 'hidden',
+            cursor: 'grab',
+            WebkitOverflowScrolling: 'touch',
+          }}
+          onMouseDown={handleMouseDown}
+          onMouseMove={handleMouseMove}
+          onMouseUp={handleDragEnd}
+          onMouseLeave={handleDragEnd}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleDragEnd}
+        >
+          <div className="flex gap-2 md:gap-[26px] justify-start items-center h-full">
+            {categories.slice(0, 10).map((category) => (
+              <div
+                key={category.id}
+                className="flex-shrink-0 flex items-center group transition-all duration-300 hover:-translate-y-2"
+              >
+                <Link href={`/products?categories=[${category.id}]`}>
+                  <div className="flex items-center flex-col transition-all w-[85px] md:w-[220px] duration-300 cursor-pointer pb-7">
+                    <div 
+                      className="relative bg-gray-100 flex items-center justify-center overflow-hidden rounded-full h-[64px] md:h-[196px] w-[64px] md:w-[196px] transition-transform duration-300"
+                    >
+                      <Image
+                        src={getCategoryImage(category.name, category.image)}
+                        alt={category.name}
+                        width={148}
+                        height={148}
+                        className="object-contain transition-transform duration-500 w-[32px] h-[32px] md:w-[148px] md:h-[148px]"
+                        sizes="148px"
+                        onError={(e) => {
+                          const target = e.target as HTMLImageElement;
+                          target.src = "/images/categories/placeholder.jpg";
+                        }}
+                      />
+                    </div>
+                    <div className="text-center mt-2 pb-2 w-full">
+                      <h3 
+                        className="text-[10px] sm:text-[16px] whitespace-nowrap"
+                        style={{ color: '#112B40' }}
+                      >
+                        {category.name}
+                      </h3>
+                    </div>
+                  </div>
+                </Link>
               </div>
-            </Link>
-          );
-        })}
+            ))}
+          </div>
+        </div>
       </div>
+
+      <style jsx>{`
+        .hide-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+        .hide-scrollbar {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+      `}</style>
     </section>
   );
 }

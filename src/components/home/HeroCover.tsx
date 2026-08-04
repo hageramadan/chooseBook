@@ -471,11 +471,11 @@ export function Hero({ onLoad }: HeroProps) {
   // عرض شاشة تحميل
   if (loading) {
     return (
-      <section className="container-custom my-4 rounded-[8px] relative w-full min-h-[50vh] sm:min-h-[60vh] md:min-h-[70vh] lg:min-h-[80vh] overflow-hidden">
+      <section className="container-custom my-4 rounded-[8px] relative w-full min-h-[40vh] sm:min-h-[50vh] md:min-h-[60vh] lg:min-h-[70vh] overflow-hidden">
         <div className="flex items-center justify-center h-full min-h-[50vh]">
           <div className="relative">
             <div className="w-12 h-12 border-4 border-gray-200 rounded-full"></div>
-            <div className="absolute top-0 left-0 w-12 h-12 border-4 border-[#C092BD] border-t-transparent rounded-full animate-spin"></div>
+            <div className="absolute top-0 left-0 w-12 h-12 border-4 border-[#23A6F0] border-t-transparent rounded-full animate-spin"></div>
           </div>
         </div>
       </section>
@@ -492,11 +492,11 @@ export function Hero({ onLoad }: HeroProps) {
   }
 
   return (
-    <section className=" relative w-full min-h-[50vh] sm:min-h-[60vh] md:min-h-[70vh] lg:min-h-[80vh] overflow-hidden">
+    <section className=" relative w-full min-h-[40vh] sm:min-h-[50vh] md:min-h-[60vh] lg:min-h-[70vh] overflow-hidden">
       
       {/* Slider */}
       <div className="w-full h-full">
-        <div className="flex w-full h-[50vh] sm:h-[60vh] md:h-[70vh] lg:h-[80vh]">
+        <div className="flex w-full h-[40vh] sm:h-[50vh] md:h-[60vh] lg:h-[70vh]">
           <div className="w-full h-full relative">
             <IndividualSlider 
               slides={leftSlides} 
@@ -508,25 +508,25 @@ export function Hero({ onLoad }: HeroProps) {
       </div>
 
       {/* Overlay gradient - فقط للديكور */}
-      {/* <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-r from-black/40 via-black/10 to-black/40" /> */}
+      <div className="absolute inset-0 z-10 pointer-events-none bg-gradient-to-r from-black/40 via-black/10 to-black/40" />
 
       {/* Fixed Center Text */}
-      <div className="container absolute inset-0 z-20 flex items-center lg:items-center justify-center lg:justify-normal px-4 sm:px-6 pointer-events-none">
+      <div className="container absolute inset-0 z-20 flex items-center justify-center px-4 sm:px-6 pointer-events-none">
         <div className="max-w-[90%] sm:max-w-[80%] md:max-w-[70%] lg:max-w-[60%] pointer-events-none">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-[58px] font-bold mb-2 sm:mb-3 md:mb-4  drop-shadow-lg">
+          <h1 className="text-2xl text-white text-center sm:text-3xl md:text-4xl lg:text-5xl xl:text-[58px] font-bold mb-2 sm:mb-3 md:mb-4  drop-shadow-lg">
             {centerText.title}
           </h1>
-          <p className=" w-full sm:w-[85%] md:w-[80%] text-sm sm:text-base md:text-lg lg:text-[20px] mb-4 sm:mb-6 md:mb-8 leading-relaxed drop-shadow-md line-clamp-3">
+          <p className=" w-full text-center  text-white  text-sm sm:text-base md:text-lg lg:text-[20px] mb-4 sm:mb-6 md:mb-8 leading-relaxed drop-shadow-md line-clamp-3">
             {centerText.description}
           </p>
     
           {/* الأزرار - pointer-events-auto للسماح بالنقر */}
-          <div className="flex gap-4 pointer-events-auto">
+          <div className="flex gap-4 pointer-events-auto justify-center">
             <Button
               asChild
               className="text-white text-[14px] sm:text-[16px] font-bold rounded-xl hover:scale-105 transition-transform duration-300"
               style={{
-                backgroundColor: "#08b2a7",
+                backgroundColor: "#23A6F0",
                 width: "150px",
                 height: "45px",
               }}

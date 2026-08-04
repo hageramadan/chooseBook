@@ -134,7 +134,7 @@ export default function SavedAddresses({
               <div className="flex gap-2">
                 <button
                   onClick={() => onEdit(address)}
-                  className="text-[#C092BD] transition p-2 hover:bg-[#fcb8b075] rounded-full"
+                  className="text-[#23A6F0] transition p-2 hover:bg-[#23A6F0] rounded-full"
                   aria-label={t('address.edit')}
                 >
                   <CiEdit className="w-5 h-5" />

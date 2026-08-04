@@ -179,7 +179,7 @@ export function CustomerReviews({ productId }: CustomerReviewsProps) {
         <div className="container-custom">
           <div className="flex justify-center items-center py-12">
             <div className="text-center">
-              <div className="w-12 h-12 border-4 border-[#C092BD] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+              <div className="w-12 h-12 border-4 border-[#23A6F0] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
               {/* <p className="text-gray-500">{t('reviews.loadingReviews')}</p> */}
             </div>
           </div>
@@ -209,7 +209,7 @@ export function CustomerReviews({ productId }: CustomerReviewsProps) {
          
             {totalReviews > 0 && (
               <Select value={sortBy} onValueChange={handleSortChange}>
-                <SelectTrigger className="h-12 bg-[#F0F0F0] rounded-full focus:ring-[#C092BD] focus:ring-offset-0">
+                <SelectTrigger className="h-12 bg-[#F0F0F0] rounded-full focus:ring-[#23A6F0] focus:ring-offset-0">
                   <SelectValue placeholder={t('reviews.sortBy')} />
                 </SelectTrigger>
                 <SelectContent className="bg-white rounded-[8px] shadow-lg border-gray-100">
@@ -217,7 +217,7 @@ export function CustomerReviews({ productId }: CustomerReviewsProps) {
                     <SelectItem
                       key={option.value}
                       value={option.value}
-                      className="cursor-pointer hover:bg-blue-50 hover:text-[#C092BD] focus:bg-blue-50 focus:text-[#C092BD]"
+                      className="cursor-pointer hover:bg-blue-50 hover:text-[#23A6F0] focus:bg-blue-50 focus:text-[#23A6F0]"
                     >
                       <div className="flex items-center gap-2">
                         <span>{option.label}</span>
@@ -228,7 +228,7 @@ export function CustomerReviews({ productId }: CustomerReviewsProps) {
               </Select>
             )}
 
-            <button className="bg-[#C092BD] text-white rounded-full px-1 lg:px-3 py-2.5 text-sm font-bold hover:bg-[#C092BD] transition-all duration-300">
+            <button className="bg-[#23A6F0] text-white rounded-full px-1 lg:px-3 py-2.5 text-sm font-bold hover:bg-[#23A6F0] transition-all duration-300">
               {t('reviews.addReview')}
             </button>
           </div> */}
@@ -240,7 +240,7 @@ export function CustomerReviews({ productId }: CustomerReviewsProps) {
             {reviews.length === 0 ? (
               <div className="text-center py-12 bg-gray-50 rounded-[8px]">
                 <p className="text-gray-500 text-sm">{t('reviews.noReviews')}</p>
-                {/* <button className="mt-4 bg-[#C092BD] text-white px-6 py-2 rounded-full text-sm">
+                {/* <button className="mt-4 bg-[#23A6F0] text-white px-6 py-2 rounded-full text-sm">
                   {t('reviews.beFirst')}
                 </button> */}
               </div>

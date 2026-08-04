@@ -272,9 +272,9 @@ export default function ProductsContent() {
     const cleanImageUrl = (url: string) => {
       if (!url) return "/placeholder-image.jpg";
       if (url.startsWith("/storage")) {
-        return `https://education.admin.t-carts.com${url}`;
+        return `https://alfareed.admin.t-carts.com${url}`;
       }
-      return `https://education.admin.t-carts.com/storage${url}`;
+      return `https://alfareed.admin.t-carts.com/storage${url}`;
     };
 
     // ✅ استخراج الكمية من المنتج
@@ -355,7 +355,7 @@ export default function ProductsContent() {
                   onClick={() => {
                     setIsMobileFilterOpen(true);
                   }}
-                  className="md:hidden flex items-center gap-2 px-4 py-2 bg-[#C092BD] rounded-[8px] hover:bg-gray-200 transition-colors"
+                  className="md:hidden flex items-center gap-2 px-4 py-2 bg-[#23A6F0] rounded-[8px] hover:bg-gray-200 transition-colors"
                 >
                   <VscSettings className="w-6 h-6 text-white" />
                 </button>

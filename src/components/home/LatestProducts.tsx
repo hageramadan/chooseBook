@@ -72,9 +72,9 @@ const transformProduct = (product: ProductData): Product => {
   const cleanImageUrl = (url: string) => {
     if (!url) return "/images/placeholder.jpg";
     if (url.startsWith("/storage")) {
-      return `https://education.admin.t-carts.com${url}`;
+      return `https://alfareed.admin.t-carts.com${url}`;
     }
-    return `https://education.admin.t-carts.com${url}`;
+    return `https://alfareed.admin.t-carts.com${url}`;
   };
 
   const mainImage =
@@ -234,7 +234,7 @@ export function LatestProducts({ onLoad }: LatestProductsProps) {
       <section className="py-2 md:py-12 bg-white">
         <div className="container-custom">
           <div className="flex flex-col justify-center items-center py-20 gap-4">
-            <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-[#C092BD]"></div>
+            <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-[#23A6F0]"></div>
           </div>
         </div>
       </section>
@@ -247,7 +247,7 @@ export function LatestProducts({ onLoad }: LatestProductsProps) {
       <section className="py-2 md:py-12 bg-white">
         <div className="container-custom">
           <div className="flex flex-col justify-center items-center py-20 gap-4">
-            <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-[#C092BD]"></div>
+            <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-[#23A6F0]"></div>
           </div>
         </div>
       </section>
@@ -285,7 +285,7 @@ export function LatestProducts({ onLoad }: LatestProductsProps) {
           </h2>
           <Link
             href="/products"
-            className="text-[#C092BD] text-xs lg:text-sm font-semibold hover:underline"
+            className="text-[#23A6F0] text-xs lg:text-sm font-semibold hover:underline"
           >
             {t.viewMore}
           </Link>
@@ -327,7 +327,7 @@ export function LatestProducts({ onLoad }: LatestProductsProps) {
         {/* Loading State for Load More -  استخدام الترجمة */}
         {isLoadingMore && (
           <div className="flex flex-col justify-center items-center py-8 gap-2">
-            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#C092BD]"></div>
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#23A6F0]"></div>
             <p className="text-gray-500 text-sm">{t.loading}</p>
           </div>
         )}

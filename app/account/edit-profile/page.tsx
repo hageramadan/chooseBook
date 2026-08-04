@@ -50,7 +50,7 @@ export default function EditProfilePage() {
     if (imagePath.startsWith('http://') || imagePath.startsWith('https://')) {
       return imagePath;
     }
-    return `https://education.admin.t-carts.com${imagePath}`;
+    return `https://alfareed.admin.t-carts.com${imagePath}`;
   };
 
   // دالة لجلب بيانات المستخدم
@@ -382,7 +382,7 @@ export default function EditProfilePage() {
         <div className="text-center">
           <div className="relative">
             <div className="w-8 h-8 md:w-12 md:h-12 border-4 border-gray-200 rounded-full"></div>
-            <div className="absolute top-0 left-0 w-8 h-8 md:w-12 md:h-12 border-4 border-[#C092BD] border-t-transparent rounded-full animate-spin"></div>
+            <div className="absolute top-0 left-0 w-8 h-8 md:w-12 md:h-12 border-4 border-[#23A6F0] border-t-transparent rounded-full animate-spin"></div>
           </div>
         </div>
       </div>
@@ -444,7 +444,7 @@ export default function EditProfilePage() {
                       }}
                     />
                   ) : (
-                    <div className="h-16 w-16 md:w-24 md:h-24 rounded-full bg-gradient-to-br from-[#ff6b6b] to-[#C092BD] flex items-center justify-center shadow-lg">
+                    <div className="h-16 w-16 md:w-24 md:h-24 rounded-full bg-gradient-to-br from-[#ff6b6b] to-[#23A6F0] flex items-center justify-center shadow-lg">
                       <span className="text-white text-base md:text-2xl font-bold">
                         {getUserInitial()}
                       </span>
@@ -660,7 +660,7 @@ export default function EditProfilePage() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="flex-1 flex justify-center gap-1 px-4 py-2 bg-[#C092BD] text-white rounded-[8px] hover:bg-[#C092BD] transition disabled:opacity-50"
+                  className="flex-1 flex justify-center gap-1 px-4 py-2 bg-[#23A6F0] text-white rounded-[8px] hover:bg-[#23A6F0] transition disabled:opacity-50"
                 >
                   {isSubmitting ? (
                     <>

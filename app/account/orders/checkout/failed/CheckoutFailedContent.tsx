@@ -151,7 +151,7 @@ export default function CheckoutFailedContent() {
         {/* رقم الطلب */}
         {orderNumber && (
           <p className="text-center text-gray-500 mb-2">
-            {t('checkout.failed.orderNumber')}: <span className="font-bold text-[#C092BD]">{orderNumber}</span>
+            {t('checkout.failed.orderNumber')}: <span className="font-bold text-[#23A6F0]">{orderNumber}</span>
           </p>
         )}
 
@@ -171,7 +171,7 @@ export default function CheckoutFailedContent() {
           <ul className="space-y-2">
             {suggestions.map((suggestion, index) => (
               <li key={index} className="flex items-start gap-2 text-sm text-gray-600">
-                <span className="text-[#C092BD] font-bold text-lg leading-none mt-0.5">•</span>
+                <span className="text-[#23A6F0] font-bold text-lg leading-none mt-0.5">•</span>
                 <span>{suggestion}</span>
               </li>
             ))}
@@ -182,7 +182,7 @@ export default function CheckoutFailedContent() {
         <div className="flex flex-col gap-3">
           <button
             onClick={handleRetry}
-            className="w-full bg-[#C092BD] text-white py-3 rounded-xl font-medium hover:bg-[#a87aa8] transition flex items-center justify-center gap-2"
+            className="w-full bg-[#23A6F0] text-white py-3 rounded-xl font-medium hover:bg-[#23A6F0] transition flex items-center justify-center gap-2"
           >
             {/* <ArrowRight className="w-5 h-5" /> */}
             {t('checkout.failed.retryButton')}

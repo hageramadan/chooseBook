@@ -27,7 +27,7 @@ export default function WalletPage() {
         throw new Error(t('account.noToken'));
       }
 
-      const apiUrl = "https://education.admin.t-carts.com/api";
+      const apiUrl = "https://alfareed.admin.t-carts.com/api";
       const response = await fetch(`${apiUrl}/wallet`, {
         method: "GET",
         headers: getHeaders(),
@@ -62,7 +62,7 @@ export default function WalletPage() {
     return (
       <div className="min-h-screen bg-gradient-to-l from-[#bdcbf12a] to-[#feecea3b] page-with-padding flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#C092BD] mx-auto mb-4"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#23A6F0] mx-auto mb-4"></div>
           <p className="text-gray-600">{t('account.loadingWallet')}</p>
         </div>
       </div>
@@ -77,7 +77,7 @@ export default function WalletPage() {
           <div className="mb-6">
             <Link
               href="/account"
-              className="inline-flex items-center gap-2 text-gray-600 hover:text-[#C092BD] transition mb-4"
+              className="inline-flex items-center gap-2 text-gray-600 hover:text-[#23A6F0] transition mb-4"
             >
               <FaChevronRight className="w-4 h-4" />
               <span>{t('account.backToAccount')}</span>
@@ -87,7 +87,7 @@ export default function WalletPage() {
             <p className="text-red-600 mb-4">{error}</p>
             <button
               onClick={fetchWalletBalance}
-              className="px-4 py-2 bg-[#C092BD] text-white rounded-[8px] hover:bg-[#C092BD] transition"
+              className="px-4 py-2 bg-[#23A6F0] text-white rounded-[8px] hover:bg-[#23A6F0] transition"
             >
               {t('account.retry')}
             </button>
@@ -105,7 +105,7 @@ export default function WalletPage() {
         <div className="mb-6">
           <Link
             href="/account"
-            className="inline-flex items-center gap-2 text-gray-600 hover:text-[#C092BD] transition mb-4"
+            className="inline-flex items-center gap-2 text-gray-600 hover:text-[#23A6F0] transition mb-4"
           >
             <FaChevronRight className="w-4 h-4" />
             <span>{t('account.backToAccount')}</span>

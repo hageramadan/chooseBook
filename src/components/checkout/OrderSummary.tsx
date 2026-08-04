@@ -81,7 +81,7 @@ export default function OrderSummary({
               <span>{t('checkout.discount')}</span>
               <span className="text-xs">(-{discountPercentage}%)</span>
             </span>
-            <span className="text-[#C092BD]">-{currencySymbol} {discount.toFixed(2)}</span>
+            <span className="text-[#23A6F0]">-{currencySymbol} {discount.toFixed(2)}</span>
           </div>
         )}
         
@@ -90,11 +90,11 @@ export default function OrderSummary({
           <div className="flex justify-between text-sm text-gray-600">
             <span className="flex items-center gap-1">
               <span>{t('checkout.couponDiscount')}</span>
-              <span className="text-xs text-green-600 bg-pink-50 px-2 py-0.5 rounded-full">
+              <span className="text-xs text-green-600 bg-blue-50 px-2 py-0.5 rounded-full">
                 {couponCode}
               </span>
             </span>
-            <span className="text-[#C092BD]">-{currencySymbol} {couponDiscount.toFixed(2)}</span>
+            <span className="text-[#23A6F0]">-{currencySymbol} {couponDiscount.toFixed(2)}</span>
           </div>
         )}
         

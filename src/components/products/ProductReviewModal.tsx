@@ -169,7 +169,7 @@ export function ProductReviewModal({
 
         <p className="text-sm text-gray-600 mb-4 line-clamp-2">
           {text.productLabel}{' '}
-          <span className="font-bold text-[#C092BD]">{productName}</span>
+          <span className="font-bold text-[#23A6F0]">{productName}</span>
         </p>
 
         {/* ✅ تقييم النجوم مع تأثير التلوين باللون الأصفر */}
@@ -206,7 +206,7 @@ export function ProductReviewModal({
           value={comment}
           onChange={(e) => setComment(e.target.value)}
           placeholder={text.placeholder}
-          className="w-full p-3 border border-gray-200 rounded-[8px] focus:outline-none focus:border-[#C092BD] focus:ring-2 focus:ring-[#C092BD]/20 resize-none bg-gray-50 min-h-[100px] transition"
+          className="w-full p-3 border border-gray-200 rounded-[8px] focus:outline-none focus:border-[#23A6F0] focus:ring-2 focus:ring-[#23A6F0]/20 resize-none bg-gray-50 min-h-[100px] transition"
           dir={language === 'en' ? 'ltr' : 'rtl'}
         />
 
@@ -220,7 +220,7 @@ export function ProductReviewModal({
           <button
             onClick={handleSubmit}
             disabled={loading || rating === 0}
-            className="flex-1 py-2.5 rounded-[8px] bg-[#C092BD] text-white font-medium hover:bg-[#a880a6] transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+            className="flex-1 py-2.5 rounded-[8px] bg-[#23A6F0] text-white font-medium hover:bg-[#23A6F0] transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
           >
             {loading ? (
               <>

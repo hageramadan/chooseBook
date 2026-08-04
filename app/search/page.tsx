@@ -18,7 +18,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-const API_URL = "https://education.admin.t-carts.com/api";
+const API_URL = "https://alfareed.admin.t-carts.com/api";
 
 // تعريف واجهات
 interface VariantAttribute {
@@ -165,7 +165,7 @@ const transformProductForCard = (product: any): TransformedProduct => {
   const cleanImageUrl = (url: string) => {
     if (!url) return "/images/placeholder-product.jpg";
     if (url.startsWith("/storage")) {
-      return `https://education.admin.t-carts.com${url}`;
+      return `https://alfareed.admin.t-carts.com${url}`;
     }
     return url;
   };
@@ -424,15 +424,15 @@ function SearchContent() {
               value={searchInput}
               onChange={(e) => setSearchInput(e.target.value)}
               placeholder={t('search.placeholder')}
-              className="w-full px-6 py-3 ps-4 border border-gray-200 rounded-[8px] focus:outline-none focus:ring-[#C092BD] focus:border-[#C092BD]"
+              className="w-full px-6 py-3 ps-4 border border-gray-200 rounded-[8px] focus:outline-none focus:ring-[#23A6F0] focus:border-[#23A6F0]"
             />
             <button
               type="submit"
-              className={`absolute ${language === 'en' ? 'end-3' : 'end-3'} top-1/2 -translate-y-1/2 text-gray-400 hover:text-[#C092BD] transition`}
+              className={`absolute ${language === 'en' ? 'end-3' : 'end-3'} top-1/2 -translate-y-1/2 text-gray-400 hover:text-[#23A6F0] transition`}
               disabled={isLoading}
             >
               {isLoading ? (
-                <div className="w-5 h-5 border-2 border-gray-300 border-t-[#C092BD] rounded-full animate-spin"></div>
+                <div className="w-5 h-5 border-2 border-gray-300 border-t-[#23A6F0] rounded-full animate-spin"></div>
               ) : (
                 <Search className="w-5 h-5" />
               )}
@@ -454,7 +454,7 @@ function SearchContent() {
           
           {products.length > 0 && !isLoading && (
             <Select value={sortBy} onValueChange={handleSortChange}>
-              <SelectTrigger className="h-12 bg-[#F0F0F0] rounded-full focus:ring-[#C092BD] focus:ring-offset-0 w-[180px]">
+              <SelectTrigger className="h-12 bg-[#F0F0F0] rounded-full focus:ring-[#23A6F0] focus:ring-offset-0 w-[180px]">
                 <SelectValue placeholder={t('search.sortBy')} />
               </SelectTrigger>
               <SelectContent className="bg-white rounded-[8px] shadow-lg border-gray-100">
@@ -462,7 +462,7 @@ function SearchContent() {
                   <SelectItem
                     key={option.value}
                     value={option.value}
-                    className="cursor-pointer hover:bg-blue-50 hover:text-[#C092BD] focus:bg-blue-50 focus:text-[#C092BD]"
+                    className="cursor-pointer hover:bg-blue-50 hover:text-[#23A6F0] focus:bg-blue-50 focus:text-[#23A6F0]"
                   >
                     <div className="flex items-center gap-2">
                       <span>{option.label}</span>
@@ -478,7 +478,7 @@ function SearchContent() {
         {isLoading && products.length > 0 && (
           <div className="flex justify-center py-8">
             <div className="flex items-center gap-2">
-              <div className="w-6 h-6 border-2 border-gray-300 border-t-[#C092BD] rounded-full animate-spin"></div>
+              <div className="w-6 h-6 border-2 border-gray-300 border-t-[#23A6F0] rounded-full animate-spin"></div>
               <span className="text-gray-500">{t('search.loadingMore')}</span>
             </div>
           </div>
@@ -547,7 +547,7 @@ function SearchContent() {
             </p>
             <button
               onClick={() => router.replace("/")}
-              className="inline-block bg-[#C092BD] text-white px-8 py-3 rounded-xl font-semibold hover:bg-[#39abee] transition-all duration-300 shadow-md hover:shadow-lg"
+              className="inline-block bg-[#23A6F0] text-white px-8 py-3 rounded-xl font-semibold hover:bg-[#39abee] transition-all duration-300 shadow-md hover:shadow-lg"
             >
               {t('search.backToHome')}
             </button>

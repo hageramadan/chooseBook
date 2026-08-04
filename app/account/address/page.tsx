@@ -17,7 +17,7 @@ export default function AddressPage() {
   const [addresses, setAddresses] = useState<Address[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  const API_URL = 'https://education.admin.t-carts.com/api';
+  const API_URL = 'https://alfareed.admin.t-carts.com/api';
 
   // جلب جميع العناوين
   const fetchAddresses = async () => {
@@ -126,7 +126,7 @@ export default function AddressPage() {
                 setEditingAddress(null);
                 setShowAddAddress(true);
               }}
-              className="flex items-center gap-2 text-[#C092BD] hover:text-[#fa7d10] transition-colors"
+              className="flex items-center gap-2 text-[#23A6F0] hover:text-[#fa7d10] transition-colors"
               aria-label={t('address.addNew')}
             >
               <BsFillPlusCircleFill className="w-10 h-10" />

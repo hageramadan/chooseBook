@@ -128,9 +128,9 @@ const extractColorsFromVariants = (
 const cleanImageUrl = (url: string) => {
   if (!url) return "/images/placeholder.jpg";
   if (url.startsWith("/storage")) {
-    return `https://education.admin.t-carts.com${url}`;
+    return `https://alfareed.admin.t-carts.com${url}`;
   }
-  return `https://education.admin.t-carts.com${url}`;
+  return `https://alfareed.admin.t-carts.com${url}`;
 };
 
 //  تحويل البيانات من API إلى شكل المنتج المطلوب مع دعم الفاريانتات والكمية
@@ -337,7 +337,7 @@ export function BestDiscounts({ onLoad }: BestDiscountsProps) {
             <div className="flex flex-col items-center gap-4">
               <div className="relative">
                 <div className="w-12 h-12 border-4 border-gray-200 rounded-full"></div>
-                <div className="absolute top-0 left-0 w-12 h-12 border-4 border-[#C092BD] border-t-transparent rounded-full animate-spin"></div>
+                <div className="absolute top-0 left-0 w-12 h-12 border-4 border-[#23A6F0] border-t-transparent rounded-full animate-spin"></div>
               </div>
             </div>
           </div>
@@ -354,7 +354,7 @@ export function BestDiscounts({ onLoad }: BestDiscountsProps) {
             <div className="flex flex-col items-center gap-4">
               <div className="relative">
                 <div className="w-12 h-12 border-4 border-gray-200 rounded-full"></div>
-                <div className="absolute top-0 left-0 w-12 h-12 border-4 border-[#C092BD] border-t-transparent rounded-full animate-spin"></div>
+                <div className="absolute top-0 left-0 w-12 h-12 border-4 border-[#23A6F0] border-t-transparent rounded-full animate-spin"></div>
               </div>
             </div>
           </div>
@@ -371,13 +371,7 @@ export function BestDiscounts({ onLoad }: BestDiscountsProps) {
   // ✅ من غير استدعاء onLoad هنا
   if (products.length === 0 && !isInitialLoading) {
     return (
-      <section className="py-6 md:py-12 bg-white">
-        <div className="container-custom">
-          <div className="flex justify-center items-center min-h-[400px]">
-            <p className="text-gray-500 text-center">{t.noDiscounts}</p>
-          </div>
-        </div>
-      </section>
+      <></>
     );
   }
 
@@ -396,7 +390,7 @@ export function BestDiscounts({ onLoad }: BestDiscountsProps) {
           </div>
           <Link
             href="/products"
-            className="text-[#C092BD] text-xs lg:text-sm font-bold hover:underline transition-all duration-300"
+            className="text-[#23A6F0] text-xs lg:text-sm font-bold hover:underline transition-all duration-300"
           >
             {t.viewMore}
           </Link>
@@ -406,7 +400,7 @@ export function BestDiscounts({ onLoad }: BestDiscountsProps) {
         {isLoadingMore && (
           <div className="flex justify-center py-4 mb-4">
             <div className="flex items-center gap-2">
-              <div className="w-6 h-6 border-2 border-gray-300 border-t-[#C092BD] rounded-full animate-spin"></div>
+              <div className="w-6 h-6 border-2 border-gray-300 border-t-[#23A6F0] rounded-full animate-spin"></div>
               <span className="text-gray-500 text-sm">{t.loadingMore}</span>
             </div>
           </div>
@@ -454,8 +448,8 @@ export function BestDiscounts({ onLoad }: BestDiscountsProps) {
               className="px-6 py-2 text-sm font-semibold transition-all duration-300 hover:scale-105"
               style={{
                 backgroundColor: "transparent",
-                color: "#C092BD",
-                border: "2px solid #C092BD",
+                color: "#23A6F0",
+                border: "2px solid #23A6F0",
                 borderRadius: "8px",
               }}
             >

@@ -12,12 +12,12 @@ export default function PrivacyPage() {
         {/* Breadcrumbs */}
         <div className="mb-6 md:mb-8">
           <div className="flex items-center gap-2 text-sm text-gray-500">
-            <Link href="/" className="hover:text-[#C092BD] transition flex items-center gap-1">
+            <Link href="/" className="hover:text-[#23A6F0] transition flex items-center gap-1">
               <Home className="w-4 h-4" />
               الرئيسية
             </Link>
             <ChevronRight className="w-4 h-4" />
-            <span className="text-[#C092BD] font-medium">سياسة الخصوصية</span>
+            <span className="text-[#23A6F0] font-medium">سياسة الخصوصية</span>
           </div>
         </div>
 
@@ -104,7 +104,7 @@ function Section({ title, children, icon }: { title: string; children: React.Rea
     <div className="pb-6">
       <h2 className="text-lg font-bold text-gray-800 mb-3 flex items-center gap-2">
         <span className="w-1.5 h-6 bg-black rounded-full"></span>
-        {icon && <span className="text-[#C092BD]">{icon}</span>}
+        {icon && <span className="text-[#23A6F0]">{icon}</span>}
         {title}
       </h2>
       <div className="text-gray-600 text-sm leading-relaxed space-y-2  ps-2">

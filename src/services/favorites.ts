@@ -95,7 +95,7 @@ const extractColorsFromVariants = (variants: ProductVariant[]): Array<{ color: s
 const cleanImageUrl = (url: string): string => {
   if (!url) return '/images/placeholder.jpg';
   if (url.startsWith('/storage')) {
-    return `https://education.admin.t-carts.com${url}`;
+    return `https://alfareed.admin.t-carts.com${url}`;
   }
   return url;
 };
@@ -173,7 +173,7 @@ export const transformFavoriteToProductCard = (favorite: FavoriteProduct | null 
 };
 
 // باقي الكود كما هو...
-const API_URL = 'https://education.admin.t-carts.com/api';
+const API_URL = 'https://alfareed.admin.t-carts.com/api';
 
 const getToken = (): string | null => {
   if (typeof window !== 'undefined') {

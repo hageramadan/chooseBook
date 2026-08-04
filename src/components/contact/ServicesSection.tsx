@@ -37,7 +37,7 @@ export default function ServicesSection() {
  useEffect(() => {
   const fetchServices = async () => {
     try {
-      const response = await fetch('https://education.admin.t-carts.com/api/contact-cards');
+      const response = await fetch('https://alfareed.admin.t-carts.com/api/contact-cards');
       
       if (!response.ok) {
         // يمكنك التعامل مع الخطأ هنا

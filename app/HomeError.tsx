@@ -16,7 +16,7 @@ export default function HomeError({ error }: HomeErrorProps) {
         <p className="text-red-600 text-xl">{error}</p>
         <button
           onClick={() => router.refresh()}
-          className="mt-4 px-6 py-2 bg-[#C092BD] text-white rounded-lg  hover:bg-[#C092BD] transition"
+          className="mt-4 px-6 py-2 bg-[#23A6F0] text-white rounded-lg  hover:bg-[#23A6F0] transition"
         >
           إعادة المحاولة
         </button>

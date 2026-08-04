@@ -178,7 +178,7 @@ export default function OTPWithPhone() {
                   onChange={(e) => handleOtpChange(index, e.target.value)}
                   onKeyDown={(e) => handleKeyDown(index, e)}
                   disabled={isLoading}
-                  className="w-10 h-10 md:w-14 md:h-14 text-center text-xl font-bold border-2 border-gray-300  rounded-[8px]  focus:border-[#C092BD] focus:ring-2 focus:ring-[#C092BD]/20 outline-none transition-all disabled:opacity-50"
+                  className="w-10 h-10 md:w-14 md:h-14 text-center text-xl font-bold border-2 border-gray-300  rounded-[8px]  focus:border-[#23A6F0] focus:ring-2 focus:ring-[#23A6F0]/20 outline-none transition-all disabled:opacity-50"
                   maxLength={1}
                 />
               ))}
@@ -188,7 +188,7 @@ export default function OTPWithPhone() {
               {!canResend ? (
                 <p className="text-gray-500 text-sm">
                   لم تستلم الرمز؟{" "}
-                  <span className="text-[#C092BD] font-medium">
+                  <span className="text-[#23A6F0] font-medium">
                     إعادة الإرسال ({timeLeft.toString().padStart(2, "0")} ثانية)
                   </span>
                 </p>
@@ -197,7 +197,7 @@ export default function OTPWithPhone() {
                   type="button"
                   onClick={handleResendCode}
                   disabled={isLoading}
-                  className="text-[#C092BD] font-medium hover:underline transition disabled:opacity-50"
+                  className="text-[#23A6F0] font-medium hover:underline transition disabled:opacity-50"
                 >
                   لم تستلم الرمز؟ إعادة إرسال
                 </button>
@@ -207,7 +207,7 @@ export default function OTPWithPhone() {
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full py-3 bg-[#C092BD] text-white  rounded-[8px]  hover:bg-[#C092BD] transition disabled:opacity-50 font-medium"
+              className="w-full py-3 bg-[#23A6F0] text-white  rounded-[8px]  hover:bg-[#23A6F0] transition disabled:opacity-50 font-medium"
             >
               {isLoading ? (
                 <>

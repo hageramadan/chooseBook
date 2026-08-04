@@ -185,7 +185,7 @@ export default function LoginWithPhone() {
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className={`w-full flex justify-center items-center gap-2 px-4 py-3 bg-[#C092BD] text-white rounded-[8px] hover:bg-[#C092BD] transition font-medium ${
+                  className={`w-full flex justify-center items-center gap-2 px-4 py-3 bg-[#23A6F0] text-white rounded-[8px] hover:bg-[#23A6F0] transition font-medium ${
                     isLoading ? "opacity-70 cursor-not-allowed" : ""
                   }`}
                 >
@@ -206,7 +206,7 @@ export default function LoginWithPhone() {
                     <button
                       type="button"
                       onClick={() => router.push("/auth/register/phone")}
-                      className="text-[#C092BD] font-medium hover:underline"
+                      className="text-[#23A6F0] font-medium hover:underline"
                     >
                       إنشاء حساب جديد
                     </button>

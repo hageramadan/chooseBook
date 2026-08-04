@@ -157,7 +157,7 @@ export function AdsSection({ variant = 'dark' }: AdsSectionProps) {
   const imageUrl = currentAd?.image 
     ? (currentAd.image.startsWith('http') 
         ? currentAd.image 
-        : `https://education.admin.t-carts.com${currentAd.image}`)
+        : `https://alfareed.admin.t-carts.com${currentAd.image}`)
     : (variant === 'dark' ? '/images/sale.png' : '/images/sale1.png');
 
   if (loading) {
@@ -166,7 +166,7 @@ export function AdsSection({ variant = 'dark' }: AdsSectionProps) {
         <div className="flex justify-center items-center min-h-[200px] md:min-h-[300px]">
           <div className="relative">
             <div className="w-8 h-8 md:w-12 md:h-12 border-4 border-gray-200 rounded-full"></div>
-            <div className="absolute top-0 left-0 w-8 h-8 md:w-12 md:h-12 border-4 border-[#C092BD] border-t-transparent rounded-full animate-spin"></div>
+            <div className="absolute top-0 left-0 w-8 h-8 md:w-12 md:h-12 border-4 border-[#23A6F0] border-t-transparent rounded-full animate-spin"></div>
           </div>
         </div>
       </section>
@@ -229,7 +229,7 @@ export function AdsSection({ variant = 'dark' }: AdsSectionProps) {
               asChild
               aria-label='buy now'
               className="w-full md:w-[180px] md:h-[60px] animate-in text-[8px] md:text-[16px] font-bold fade-in slide-in-from-bottom-5 duration-700 delay-200  rounded-[8px]  mt-1 md:mt-4"
-              style={{ backgroundColor: '#C092BD' }}
+              style={{ backgroundColor: '#23A6F0' }}
             >
               <Link href={currentAd?.link || "/products"} className="flex items-center justify-center gap-1 md:gap-2 text-white">
                 تسوق الان
@@ -284,13 +284,13 @@ export function AdsSection({ variant = 'dark' }: AdsSectionProps) {
           <div className="w-1/2 md:w-1/2 text-center md:text-right pt-2 md:pt-0">
             <div className="max-w-xl mx-auto md:mx-0">
               <div className="inline-block">
-                <p className="text-[8px] md:text-[16px] font-semibold px-1.5 py-0.5 md:px-4 md:py-1.5 bg-black/10 text-[#C092BD] rounded-full inline-block">
+                <p className="text-[8px] md:text-[16px] font-semibold px-1.5 py-0.5 md:px-4 md:py-1.5 bg-black/10 text-[#23A6F0] rounded-full inline-block">
                   لفترة محدودة
                 </p>
               </div>
               
               <div className="mt-1 md:mt-6">
-                <p className="text-[14px] md:text-[48px] font-bold text-[#C092BD]">
+                <p className="text-[14px] md:text-[48px] font-bold text-[#23A6F0]">
                   خصم {discount}%
                 </p>
                 <div className="w-10 md:w-20 h-0.5 md:h-1 bg-black rounded-full mt-0.5 md:mt-2 mx-auto md:mx-0"></div>
@@ -304,7 +304,7 @@ export function AdsSection({ variant = 'dark' }: AdsSectionProps) {
                 asChild
                 aria-label='buy now'
                 className=" rounded-[8px]  mt-2 md:mt-8 w-full sm:w-auto px-3 md:px-10 mb-2 md:mb-0 py-1 md:py-6 text-[8px] md:text-[18px] font-bold hover:scale-105 transition-all duration-300 shadow-lg"
-                style={{ backgroundColor: '#C092BD' }}
+                style={{ backgroundColor: '#23A6F0' }}
               >
                 <Link href={currentAd?.link || "/products"} className="flex items-center justify-center gap-1 md:gap-2 text-white">
                   تسوق الان

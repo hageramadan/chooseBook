@@ -298,7 +298,7 @@ const handleLoginWithPhone = useCallback(
     ): Promise<{ success: boolean; message: string; token?: string }> => {
       try {
         const response = await fetch(
-          "https://education.admin.t-carts.com/api/auth/verify-otp",
+          "https://alfareed.admin.t-carts.com/api/auth/verify-otp",
           {
             method: "POST",
             headers: getHeaders(false),
@@ -351,7 +351,7 @@ const handleLoginWithPhone = useCallback(
     ): Promise<{ success: boolean; message: string; token?: string }> => {
       try {
         const response = await fetch(
-          "https://education.admin.t-carts.com/api/auth/verify-otp",
+          "https://alfareed.admin.t-carts.com/api/auth/verify-otp",
           {
             method: "POST",
             headers: getHeaders(false),
@@ -430,7 +430,7 @@ const handleLoginWithPhone = useCallback(
     ): Promise<{ success: boolean; message: string }> => {
       try {
         const response = await fetch(
-          "https://education.admin.t-carts.com/api/auth/resend-otp",
+          "https://alfareed.admin.t-carts.com/api/auth/resend-otp",
           {
             method: "POST",
             headers: getHeaders(),

@@ -218,7 +218,7 @@ export default function ResetPasswordClient() {
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full py-3 bg-[#C092BD] text-white rounded-[8px] hover:bg-[#C092BD] transition disabled:opacity-50"
+              className="w-full py-3 bg-[#23A6F0] text-white rounded-[8px] hover:bg-[#23A6F0] transition disabled:opacity-50"
             >
               {isLoading ? t("auth.resetting") : t("auth.resetPassword")}
             </button>
@@ -229,7 +229,7 @@ export default function ResetPasswordClient() {
                 <button
                   type="button"
                   onClick={() => router.push("/auth/login")}
-                  className="text-[#C092BD] font-medium hover:underline"
+                  className="text-[#23A6F0] font-medium hover:underline"
                 >
                   {t("auth.login")}
                 </button>

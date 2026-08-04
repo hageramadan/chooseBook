@@ -130,7 +130,7 @@ export default function AddAddress({
   const [isLoadingGovernorates, setIsLoadingGovernorates] = useState(true);
   const [isLoadingCities, setIsLoadingCities] = useState(false);
 
-  const API_URL = "https://education.admin.t-carts.com/api";
+  const API_URL = "https://alfareed.admin.t-carts.com/api";
 
   // --- جلب المحافظات من الـ API ---
   useEffect(() => {
@@ -762,7 +762,7 @@ export default function AddAddress({
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="flex-1 px-4 py-2 bg-[#C092BD] text-white rounded-[8px] hover:bg-[#C092BD] transition disabled:opacity-50"
+                    className="flex-1 px-4 py-2 bg-[#23A6F0] text-white rounded-[8px] hover:bg-[#23A6F0] transition disabled:opacity-50"
                   >
                     {isSubmitting
                       ? t('address.saving')
@@ -796,7 +796,7 @@ export default function AddAddress({
                   </div>
                 )}
                 {selectedLocation && (
-                  <div className="mt-3 p-3 bg-pink-50 border border-green-200 rounded-[8px]">
+                  <div className="mt-3 p-3 bg-blue-50 border border-green-200 rounded-[8px]">
                     <p className="text-sm text-green-800 font-medium">
                       {t('address.selectedFromMap')}:
                     </p>

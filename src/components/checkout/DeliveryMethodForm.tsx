@@ -19,7 +19,7 @@ export default function DeliveryMethodForm({
         <label
           className={`flex items-center gap-3 p-4 border rounded-[8px] cursor-pointer transition ${
             deliveryMethod === "pickup"
-              ? "border-[#C092BD] bg-pink-50"
+              ? "border-[#23A6F0] bg-blue-50"
               : "border-gray-200 hover:border-gray-300"
           }`}
         >
@@ -27,7 +27,7 @@ export default function DeliveryMethodForm({
             type="radio"
             checked={deliveryMethod === "pickup"}
             onChange={() => onDeliveryMethodChange("pickup")}
-            className="w-4 h-4 text-[#C092BD] focus:ring-[#C092BD]"
+            className="w-4 h-4 text-[#23A6F0] focus:ring-[#23A6F0]"
           />
           <MapPin className="w-5 h-5 text-gray-600" />
           <div>
@@ -38,7 +38,7 @@ export default function DeliveryMethodForm({
         <label
           className={`flex items-center gap-3 p-4 border rounded-[8px] cursor-pointer transition ${
             deliveryMethod === "delivery"
-              ? "border-[#C092BD] bg-pink-50"
+              ? "border-[#23A6F0] bg-blue-50"
               : "border-gray-200 hover:border-gray-300"
           }`}
         >
@@ -46,7 +46,7 @@ export default function DeliveryMethodForm({
             type="radio"
             checked={deliveryMethod === "delivery"}
             onChange={() => onDeliveryMethodChange("delivery")}
-            className="w-4 h-4 text-[#C092BD] focus:ring-[#C092BD]"
+            className="w-4 h-4 text-[#23A6F0] focus:ring-[#23A6F0]"
           />
           <Truck className="w-5 h-5 text-gray-600" />
           <div>
