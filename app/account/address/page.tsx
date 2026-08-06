@@ -17,7 +17,7 @@ export default function AddressPage() {
   const [addresses, setAddresses] = useState<Address[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  const API_URL = 'https://ekhtarktabak.t-carts.com/api';
+  const API_URL = 'https://admin.ekhtarktabak.com/api';
 
   // جلب جميع العناوين
   const fetchAddresses = async () => {

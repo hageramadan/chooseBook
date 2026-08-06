@@ -272,9 +272,9 @@ export default function ProductsContent() {
     const cleanImageUrl = (url: string) => {
       if (!url) return "/placeholder-image.jpg";
       if (url.startsWith("/storage")) {
-        return `https://ekhtarktabak.t-carts.com${url}`;
+        return `https://admin.ekhtarktabak.com${url}`;
       }
-      return `https://ekhtarktabak.t-carts.com/storage${url}`;
+      return `https://admin.ekhtarktabak.com/storage${url}`;
     };
 
     // ✅ استخراج الكمية من المنتج

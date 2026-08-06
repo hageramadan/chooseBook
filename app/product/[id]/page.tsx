@@ -30,7 +30,7 @@ const transformProductData = (apiProduct: ProductData, t: any) => {
   const cleanImageUrl = (url: string) => {
     if (!url) return "/images/placeholder.jpg";
     if (url.startsWith("/storage")) {
-      return `https://ekhtarktabak.t-carts.com${url}`;
+      return `https://admin.ekhtarktabak.com${url}`;
     }
     return url;
   };
@@ -66,7 +66,7 @@ const transformProductData = (apiProduct: ProductData, t: any) => {
     price: finalPrice,
     originalPrice: originalPrice || undefined,
     discount: discountPercentage || undefined,
-    brand: apiProduct.brand?.name || apiProduct.category?.name || t("product.defaultBrand"),
+    brand: apiProduct.brand?.name || apiProduct.category?.name ,
     category: apiProduct.category?.name || t("product.defaultCategory"),
     images: processedImages,
     colors: finalColors,

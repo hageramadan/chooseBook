@@ -13,7 +13,7 @@ interface PromoCodeInputProps {
   appliedCode: string;
 }
 
-const API_URL = 'https://ekhtarktabak.t-carts.com/api';
+const API_URL = 'https://admin.ekhtarktabak.com/api';
 
 //  دالة جلب التوكن
 const getToken = (): string | null => {

@@ -231,13 +231,14 @@ export function Footer() {
           {/* اللوجو */}
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <h1 className="text-[#FFFFFF] text-base md:text-2xl font-bold">
+              {/* <h1 className="text-[#FFFFFF] text-base md:text-2xl font-bold">
                 {settingsLoading ? t.loading : settings?.name || "LoGo"}
               </h1>
               <PiLineVerticalThin className="w-6 h-8 text-[#E8ECEF]" />
               <p className="text-white/70 text-sm leading-relaxed">
                 {settingsLoading ? t.loading : settings?.address || t.storeName}
-              </p>
+              </p> */}
+              <Image src={'/logo.png'} className="object-contain" alt="Logo"  width={200} height={100}/>
             </div>
           </div>
 

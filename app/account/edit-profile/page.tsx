@@ -50,7 +50,7 @@ export default function EditProfilePage() {
     if (imagePath.startsWith('http://') || imagePath.startsWith('https://')) {
       return imagePath;
     }
-    return `https://ekhtarktabak.t-carts.com${imagePath}`;
+    return `https://admin.ekhtarktabak.com${imagePath}`;
   };
 
   // دالة لجلب بيانات المستخدم

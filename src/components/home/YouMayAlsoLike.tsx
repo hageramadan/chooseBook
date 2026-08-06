@@ -95,9 +95,9 @@ const transformProduct = (product: ProductData): Product => {
   const cleanImageUrl = (url: string) => {
     if (!url) return "/images/placeholder.jpg";
     if (url.startsWith("/storage")) {
-      return `https://ekhtarktabak.t-carts.com${url}`;
+      return `https://admin.ekhtarktabak.com${url}`;
     }
-    return `https://ekhtarktabak.t-carts.com${url}`;
+    return `https://admin.ekhtarktabak.com${url}`;
   };
 
   const mainImage =

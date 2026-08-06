@@ -157,7 +157,7 @@ export function AdsSection({ variant = 'dark' }: AdsSectionProps) {
   const imageUrl = currentAd?.image 
     ? (currentAd.image.startsWith('http') 
         ? currentAd.image 
-        : `https://ekhtarktabak.t-carts.com${currentAd.image}`)
+        : `https://admin.ekhtarktabak.com${currentAd.image}`)
     : (variant === 'dark' ? '/images/sale.png' : '/images/sale1.png');
 
   if (loading) {

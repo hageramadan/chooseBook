@@ -27,7 +27,7 @@ export default function WalletPage() {
         throw new Error(t('account.noToken'));
       }
 
-      const apiUrl = "https://ekhtarktabak.t-carts.com/api";
+      const apiUrl = "https://admin.ekhtarktabak.com/api";
       const response = await fetch(`${apiUrl}/wallet`, {
         method: "GET",
         headers: getHeaders(),

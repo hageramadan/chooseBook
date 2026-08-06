@@ -240,7 +240,7 @@ export default function WishlistPage() {
     if (!url) return "/images/placeholder.jpg";
     if (url.startsWith("http")) return url;
     if (url.startsWith("/storage")) {
-      return `https://ekhtarktabak.t-carts.com${url}`;
+      return `https://admin.ekhtarktabak.com${url}`;
     }
     return url;
   }, []);

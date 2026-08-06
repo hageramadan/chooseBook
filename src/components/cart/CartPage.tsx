@@ -113,7 +113,7 @@ export function CartPage() {
   const cleanImageUrl = (url: string | null | undefined) => {
     if (!url) return "/images/placeholder.jpg";
     if (url.startsWith("/storage")) {
-      return `https://ekhtarktabak.t-carts.com${url}`;
+      return `https://admin.ekhtarktabak.com${url}`;
     }
     return url;
   };

@@ -25,7 +25,7 @@ import OrderSummary from "@/components/checkout/OrderSummary";
 import PhoneInput from "@/components/contact/PhoneInput";
 import { getHeaders } from "@/services/api";
 
-const API_URL = "https://ekhtarktabak.t-carts.com/api";
+const API_URL = "https://admin.ekhtarktabak.com/api";
 
 // دالة جلب السلة مع البارامترات (delivery_method و city_id)
 const fetchCartWithParams = async (
@@ -222,7 +222,7 @@ const transformCartItems = (cart: any, t: any): CartItem[] => {
     const cleanImageUrl = (url: string) => {
       if (!url) return "/images/placeholder.jpg";
       if (url.startsWith("/storage")) {
-        return `https://ekhtarktabak.t-carts.com${url}`;
+        return `https://admin.ekhtarktabak.com${url}`;
       }
       return url;
     };

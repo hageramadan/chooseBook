@@ -57,7 +57,7 @@ export default function ContactForm() {
         message: formData.message,
       };
 
-      const response = await fetch("https://ekhtarktabak.t-carts.com/api/contact-us", {
+      const response = await fetch("https://admin.ekhtarktabak.com/api/contact-us", {
         method: "POST",
         headers: getHeaders(false),
         body: JSON.stringify(payload),

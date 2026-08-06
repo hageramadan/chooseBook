@@ -118,7 +118,7 @@ interface OrderDetails {
 }
 
 // ========== إعدادات API ==========
-const API_URL = "https://ekhtarktabak.t-carts.com/api";
+const API_URL = "https://admin.ekhtarktabak.com/api";
 
 const getToken = (): string | null => {
   if (typeof window !== "undefined") {
@@ -281,7 +281,7 @@ const formatDate = (dateString: string): string => {
 const cleanImageUrl = (url: string): string => {
   if (!url) return PLACEHOLDER_IMAGE;
   if (url.startsWith("/storage")) {
-    return `https://ekhtarktabak.t-carts.com${url}`;
+    return `https://admin.ekhtarktabak.com${url}`;
   }
   return url;
 };

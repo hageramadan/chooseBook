@@ -614,7 +614,7 @@ const getMaxQuantity = (): number => {
   const cleanImageUrl = (url: string) => {
     if (!url) return "/images/placeholder.jpg";
     if (url.startsWith("/storage")) {
-      return `https://ekhtarktabak.t-carts.com${url}`;
+      return `https://admin.ekhtarktabak.com${url}`;
     }
     return url;
   };
@@ -779,7 +779,7 @@ const getMaxQuantity = (): number => {
                 {product.name}
               </h1>
               <span className="text-sm lg:text-base text-[#666666]">
-                {product.brand || t("product.noBrand")}
+                {product.brand }
               </span>
             </div>
 
@@ -1022,7 +1022,7 @@ const getMaxQuantity = (): number => {
                     <strong>{t("product.category")}:</strong> {product.category}
                   </p>
                   <p>
-                    <strong>{t("product.brand")}:</strong> {product.brand || t("product.noBrand")}
+                    <strong>{t("product.brand")}:</strong> {product.brand }
                   </p>
                   {selectedVariant && (
                     <>
