@@ -397,7 +397,7 @@ export function Navbar() {
                 alt="Logo"
                 width={1000}
                 height={700}
-                className="object-contain w-20 h-20 lg:w-32 lg:h-32"
+                className="object-contain w-16 h-16"
               />
               {/* Logo */}
             </Link>
@@ -740,14 +740,14 @@ export function Navbar() {
 
       {/* الشريط العلوي للموبايل */}
       <div className="md:hidden sticky top-0 z-30 w-full bg-white shadow-md">
-        <div className="px-2 flex items-center justify-between">
+        <div className="px-2 flex items-center justify-between py-3">
           <Link href="/" className="shrink-0 text-[#23A6F0] font-semibold text-lg">
               <Image
               src="/logo.png"
               alt="Logo"
               width={2000}
               height={500}
-              className="object-contain w-20 h-20"
+              className="object-contain w-10 h-10"
             />
             {/* Logo */}
           </Link>

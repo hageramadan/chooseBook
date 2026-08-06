@@ -1,64 +1,47 @@
 // hooks/useCurrency.ts
 import { useState, useEffect } from "react";
 import { getSettings } from "@/services/settingsApi";
+import { useLanguage } from "@/contexts/LanguageContext";
 
-// ✅ Singleton pattern - يجلب العملة مرة واحدة فقط
-let cachedCurrency: string | null = null;
-let fetchPromise: Promise<string | null> | null = null;
-let isFetching = false;
+// ✅ تخزين العملة حسب اللغة
+let currencyCache: Record<string, string> = {};
 
-const fetchCurrencyFromAPI = async (): Promise<string | null> => {
-  // إذا كانت العملة مخزنة مسبقاً، أرجعها فوراً
-  if (cachedCurrency) {
-    return cachedCurrency;
+const fetchCurrencyFromAPI = async (lang: string): Promise<string> => {
+  // إذا كانت العملة مخزنة لهذه اللغة
+  if (currencyCache[lang]) {
+    return currencyCache[lang];
   }
 
-  // إذا كان هناك طلب قيد التنفيذ، انتظره
-  if (fetchPromise) {
-    return fetchPromise;
-  }
-
-  // منع الطلبات المتكررة
-  if (isFetching) {
-    return cachedCurrency || "Egp";
-  }
-
-  isFetching = true;
-
-  fetchPromise = (async () => {
-    try {
-      // محاولة جلب العملة من localStorage أولاً
-      const storedCurrency = localStorage.getItem("currency");
-      if (storedCurrency) {
-        cachedCurrency = storedCurrency;
-        isFetching = false;
-        return cachedCurrency;
-      }
-
-      // جلب العملة من API
-      const settings = await getSettings();
-
-      if (settings?.setting?.currency) {
-        const currencyCode = settings.setting.currency;
-        cachedCurrency = currencyCode;
-        localStorage.setItem("currency", currencyCode);
-        isFetching = false;
-        return cachedCurrency;
-      }
-
-      // إذا لم توجد عملة، استخدم الافتراضية
-      cachedCurrency = "Egp";
-      isFetching = false;
-      return cachedCurrency;
-    } catch (error) {
-      console.error("Error fetching currency:", error);
-      cachedCurrency = "Egp";
-      isFetching = false;
-      return cachedCurrency;
+  try {
+    // جلب العملة من localStorage حسب اللغة
+    const cacheKey = `currency_${lang}`;
+    const storedCurrency = localStorage.getItem(cacheKey);
+    if (storedCurrency) {
+      currencyCache[lang] = storedCurrency;
+      return storedCurrency;
     }
-  })();
 
-  return fetchPromise;
+    // جلب العملة من API مع تمرير اللغة
+    const settings = await getSettings(lang);
+
+    if (settings?.setting?.currency) {
+      const currencyCode = settings.setting.currency;
+      currencyCache[lang] = currencyCode;
+      localStorage.setItem(cacheKey, currencyCode);
+      return currencyCode;
+    }
+
+    // العملة الافتراضية حسب اللغة
+    const defaultCurrency = lang === 'ar' ? 'جنيه مصري' : 'Egyptian Pound (EGP)';
+    currencyCache[lang] = defaultCurrency;
+    localStorage.setItem(cacheKey, defaultCurrency);
+    return defaultCurrency;
+  } catch (error) {
+    console.error("Error fetching currency:", error);
+    const defaultCurrency = lang === 'ar' ? 'جنيه مصري' : 'Egyptian Pound (EGP)';
+    currencyCache[lang] = defaultCurrency;
+    return defaultCurrency;
+  }
 };
 
 interface UseCurrencyReturn {
@@ -69,24 +52,18 @@ interface UseCurrencyReturn {
 }
 
 export function useCurrency(): UseCurrencyReturn {
-  const [currency, setCurrency] = useState<string | null>(cachedCurrency);
-  const [isLoading, setIsLoading] = useState(!cachedCurrency);
+  const { language } = useLanguage();
+  const [currency, setCurrency] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     let isMounted = true;
 
     const loadCurrency = async () => {
-      // إذا كانت العملة موجودة بالفعل، لا تجلب مرة أخرى
-      if (cachedCurrency) {
-        setCurrency(cachedCurrency);
-        setIsLoading(false);
-        return;
-      }
-
       try {
         setIsLoading(true);
-        const result = await fetchCurrencyFromAPI();
+        const result = await fetchCurrencyFromAPI(language);
         if (isMounted) {
           setCurrency(result);
           setError(null);
@@ -94,7 +71,8 @@ export function useCurrency(): UseCurrencyReturn {
       } catch (err) {
         if (isMounted) {
           setError("Failed to load currency");
-          setCurrency("Egp");
+          const defaultCurrency = language === 'ar' ? 'جنيه مصري' : 'Egyptian Pound (EGP)';
+          setCurrency(defaultCurrency);
         }
       } finally {
         if (isMounted) {
@@ -108,19 +86,16 @@ export function useCurrency(): UseCurrencyReturn {
     return () => {
       isMounted = false;
     };
-  }, []);
+  }, [language]); // ✅ يتغير عند تغيير اللغة
 
   const refreshCurrency = async () => {
-    // إعادة تعيين التخزين المؤقت
-    cachedCurrency = null;
-    fetchPromise = null;
-    isFetching = false;
-    localStorage.removeItem("currency");
-
-    // جلب من جديد
+    // مسح الكاش للغة الحالية
+    delete currencyCache[language];
+    localStorage.removeItem(`currency_${language}`);
+    
     try {
       setIsLoading(true);
-      const result = await fetchCurrencyFromAPI();
+      const result = await fetchCurrencyFromAPI(language);
       setCurrency(result);
       setError(null);
     } catch (err) {

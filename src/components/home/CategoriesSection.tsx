@@ -198,7 +198,7 @@ export function CategoriesSection({ onLoad }: CategoriesSectionProps) {
         {/* حاوية السحب الأفقية */}
         <div 
           ref={sliderRef}
-          className="overflow-x-auto h-[100px] md:h-[236px] pt-4 md:pt-8 hide-scrollbar"
+          className="overflow-x-auto h-[120px] md:h-[250px] pt-4 md:pt-8 hide-scrollbar"
           style={{ 
             width: '100%',
             overflowY: 'hidden',
@@ -220,16 +220,16 @@ export function CategoriesSection({ onLoad }: CategoriesSectionProps) {
                 className="flex-shrink-0 flex items-center group transition-all duration-300 hover:-translate-y-2"
               >
                 <Link href={`/products?categories=[${category.id}]`}>
-                  <div className="flex items-center flex-col transition-all w-[85px] md:w-[220px] duration-300 cursor-pointer pb-7">
+                  <div className="flex items-center flex-col transition-all w-[100px] md:w-[180px] duration-300 cursor-pointer py-7">
                     <div 
-                      className="relative bg-gray-100 flex items-center justify-center overflow-hidden rounded-full h-[64px] md:h-[196px] w-[64px] md:w-[196px] transition-transform duration-300"
+                      className="relative bg-gray-100 flex items-center justify-center overflow-hidden rounded-full h-[80px] md:h-[176px] w-[80px] md:w-[176px] transition-transform duration-300"
                     >
                       <Image
                         src={getCategoryImage(category.name, category.image)}
                         alt={category.name}
                         width={148}
                         height={148}
-                        className="object-contain transition-transform duration-500 w-[32px] h-[32px] md:w-[148px] md:h-[148px]"
+                        className="object-contain transition-transform duration-500 w-[50px] h-[50px] md:w-[128px] md:h-[128px]"
                         sizes="148px"
                         onError={(e) => {
                           const target = e.target as HTMLImageElement;

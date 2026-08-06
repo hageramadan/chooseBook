@@ -20,7 +20,7 @@ interface SettingsData {
     main_color?: string;
     secondary_color?: string;
     template_id?: number;
-    currency?: string; // ✅ أضف هذه الخاصية
+    currency?: string;
     meta: {
       meta_title: string | null;
       meta_description: string | null;
@@ -35,12 +35,12 @@ interface SettingsResponse {
   data: SettingsData;
 }
 
-// دالة لجلب إعدادات الموقع
-export async function getSettings(): Promise<SettingsData> {
+// ✅ إضافة معامل اللغة
+export async function getSettings(lang?: string): Promise<SettingsData> {
   try {
     const response = await fetch(`https://alfareed.admin.t-carts.com/api/settings`, {
       method: 'GET',
-      headers: getHeaders(false),
+      headers: getHeaders(false, lang), // ✅ تمرير اللغة
     });
 
     if (!response.ok) {

@@ -26,7 +26,7 @@ const getTranslations = (lang: string) => {
       loading: "Loading...",
       noCategories: "No categories",
       home: "Home",
-      allRightsReserved: "All Rights Reserved",
+      allRightsReserved: "All Rights Reserved  © T Carts 2026",
       storeName: "Your perfect store, everything you need",
     };
   }
@@ -45,7 +45,7 @@ const getTranslations = (lang: string) => {
     loading: "جاري التحميل...",
     noCategories: "لا توجد فئات",
     home: "الرئيسية",
-    allRightsReserved: "جميع الحقوق محفوظة",
+    allRightsReserved: "جميع الحقوق محفوظة   © T Carts 2026",
     storeName: "متجرك المثالي هنا كل ما تريد",
   };
 };
@@ -316,7 +316,7 @@ export function Footer() {
         <div className="border-t border-white/20 pt-6 md:pt-8 pb-16 lg:pb-0">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-white/60 font-bold text-sm">
-              © {t.allRightsReserved} | {new Date().getFullYear()}
+              {t.allRightsReserved} 
             </p>
 
             <div className="flex gap-6">
