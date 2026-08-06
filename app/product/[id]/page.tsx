@@ -30,7 +30,7 @@ const transformProductData = (apiProduct: ProductData, t: any) => {
   const cleanImageUrl = (url: string) => {
     if (!url) return "/images/placeholder.jpg";
     if (url.startsWith("/storage")) {
-      return `https://alfareed.admin.t-carts.com${url}`;
+      return `https://ekhtarktabak.t-carts.com${url}`;
     }
     return url;
   };

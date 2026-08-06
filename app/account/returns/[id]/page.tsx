@@ -107,7 +107,7 @@ interface ReturnDetails {
 }
 
 // ========== إعدادات API ==========
-const API_URL = 'https://alfareed.admin.t-carts.com/api';
+const API_URL = 'https://ekhtarktabak.t-carts.com/api';
 
 const getToken = (): string | null => {
   if (typeof window !== 'undefined') {
@@ -210,7 +210,7 @@ const transformReturnDetails = (apiReturn: any, locale: string = "ar-EG"): Retur
 const cleanImageUrl = (url: string): string => {
   if (!url) return PLACEHOLDER_IMAGE;
   if (url.startsWith("/storage")) {
-    return `https://alfareed.admin.t-carts.com${url}`;
+    return `https://ekhtarktabak.t-carts.com${url}`;
   }
   return url;
 };

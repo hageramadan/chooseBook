@@ -397,7 +397,7 @@ export function Navbar() {
                 alt="Logo"
                 width={1000}
                 height={700}
-                className="object-contain w-16 h-16"
+                className="object-contain w-20 h-20"
               />
               {/* Logo */}
             </Link>
@@ -747,7 +747,7 @@ export function Navbar() {
               alt="Logo"
               width={2000}
               height={500}
-              className="object-contain w-10 h-10"
+              className="object-contain w-14 h-14"
             />
             {/* Logo */}
           </Link>

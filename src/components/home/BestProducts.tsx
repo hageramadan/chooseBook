@@ -126,9 +126,9 @@ const extractColorsFromVariants = (
 const cleanImageUrl = (url: string) => {
   if (!url) return "/images/placeholder.jpg";
   if (url.startsWith('/storage')) {
-    return `https://alfareed.admin.t-carts.com${url}`;
+    return `https://ekhtarktabak.t-carts.com${url}`;
   }
-  return `https://alfareed.admin.t-carts.com${url}`;
+  return `https://ekhtarktabak.t-carts.com${url}`;
 };
 
 // تحويل البيانات من API إلى شكل المنتج المطلوب - ديناميكي بالكامل

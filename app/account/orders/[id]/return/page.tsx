@@ -13,7 +13,7 @@ import { useTranslation } from "@/hooks/useTranslation";
 import { useCurrency } from "@/hooks/useCurrency";
 
 // ========== إعدادات API ==========
-const API_URL = 'https://alfareed.admin.t-carts.com/api';
+const API_URL = 'https://ekhtarktabak.t-carts.com/api';
 
 // ========== أنواع البيانات ==========
 interface OrderItem {
@@ -202,7 +202,7 @@ const submitReturnRequest = async (
 const cleanImageUrl = (url: string): string => {
   if (!url) return "/images/placeholder-product.png";
   if (url.startsWith("/storage")) {
-    return `https://alfareed.admin.t-carts.com${url}`;
+    return `https://ekhtarktabak.t-carts.com${url}`;
   }
   return url;
 };

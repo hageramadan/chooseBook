@@ -119,7 +119,7 @@ interface PaginationData {
 }
 
 // ========== إعدادات API ==========
-const API_URL = "https://alfareed.admin.t-carts.com/api";
+const API_URL = "https://ekhtarktabak.t-carts.com/api";
 const PLACEHOLDER_IMAGE = "/images/placeholder-product.png";
 
 // ========== دوال التحويل ==========
@@ -151,7 +151,7 @@ const formatDate = (dateString: string): string => {
 const cleanImageUrl = (url: string): string => {
   if (!url) return PLACEHOLDER_IMAGE;
   if (url.startsWith("/storage")) {
-    return `https://alfareed.admin.t-carts.com${url}`;
+    return `https://ekhtarktabak.t-carts.com${url}`;
   }
   return url;
 };

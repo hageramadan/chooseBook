@@ -210,7 +210,7 @@ export function SubNavbar() {
       <div className="container mx-auto px-4 md:px-8">
         <div className="flex items-center justify-between ">
           {/* Right Section - Email & Phone */}
-          <div className="hidden lg:flex gap-5 items-center ">
+          <div className="flex gap-5 items-center ">
             {/* Phone */}
             <div className="hidden md:flex items-center gap-1">
               <LiaPhoneSolid className="text-white" />
@@ -224,7 +224,7 @@ export function SubNavbar() {
             </div>
             
             {/* Email */}
-            <div className="hidden md:flex items-center gap-2">
+            <div className="flex items-center gap-2">
               <TfiEmail className="text-white" />
               <Link
                 href={settings?.email ? `mailto:${settings.email}` : "#"}

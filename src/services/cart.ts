@@ -96,7 +96,7 @@ export interface UpdateQuantityPayload {
   quantity: number;
 }
 
-const API_URL = 'https://alfareed.admin.t-carts.com/api';
+const API_URL = 'https://ekhtarktabak.t-carts.com/api';
 
 const getToken = (): string | null => {
   if (typeof window !== 'undefined') {

@@ -8,7 +8,7 @@ import toast from "react-hot-toast";
 import { getHeaders } from "@/services/api";
 import { useTranslation } from "@/hooks/useTranslation"; // ✅ استيراد hook الترجمة
 
-const API_URL = 'https://alfareed.admin.t-carts.com/api';
+const API_URL = 'https://ekhtarktabak.t-carts.com/api';
 
 const getToken = (): string | null => {
   if (typeof window !== 'undefined') {

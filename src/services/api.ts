@@ -1,8 +1,8 @@
 import { Currency } from "@/types/product";
 
 // services/api.ts
-const API_URL = "https://alfareed.admin.t-carts.com/api";
-const API_BASE_URL_Img="https://alfareed.admin.t-carts.com";
+const API_URL = "https://ekhtarktabak.t-carts.com/api";
+const API_BASE_URL_Img="https://ekhtarktabak.t-carts.com";
 // ========== دوال مساعدة للمصادقة (يجب تعريفها أولاً) ==========
 export function getToken(): string | null {
   if (typeof window !== 'undefined') {
@@ -414,7 +414,7 @@ export interface AdData {
 
 export async function getAds(): Promise<AdData[]> {
   try {
-    const response = await fetch(`https://alfareed.admin.t-carts.com/api/ads`, {
+    const response = await fetch(`https://ekhtarktabak.t-carts.com/api/ads`, {
       method: 'GET',
       headers: getHeaders(false),
       cache: getCacheStrategy(),

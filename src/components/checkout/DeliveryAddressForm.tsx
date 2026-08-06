@@ -97,7 +97,7 @@ export default function DeliveryAddressForm({
   const isFetchingRef = useRef(false);
   const hasFetchedAddressesRef = useRef(false);
   
-  const API_URL = 'https://alfareed.admin.t-carts.com/api';
+  const API_URL = 'https://ekhtarktabak.t-carts.com/api';
 
   const getFieldValue = (value: string): string => {
     return value && value.trim() !== "" ? value.trim() : "";

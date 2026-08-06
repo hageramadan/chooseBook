@@ -8,19 +8,19 @@ const nextConfig: NextConfig = {
         remotePatterns: [
       {
         protocol: 'http',
-        hostname: 'alfareed.admin.t-carts.com',
+        hostname: 'ekhtarktabak.t-carts.com',
         port: '',
         pathname: '/storage/**',
       },
       {
         protocol: 'https',
-        hostname: 'alfareed.admin.t-carts.com',
+        hostname: 'ekhtarktabak.t-carts.com',
         port: '',
         pathname: '/storage/**',
       },
          {
         protocol: 'http',
-        hostname: 'alfareed.admin.t-carts.com',
+        hostname: 'ekhtarktabak.t-carts.com',
         port: '',
         pathname: '/**', 
       },

@@ -102,7 +102,7 @@ export function CategoriesSection({ onLoad }: CategoriesSectionProps) {
   const getFullImageUrl = (imagePath: string) => {
     if (!imagePath) return "/images/categories/placeholder.jpg";
     if (imagePath.startsWith('/storage')) {
-      return `https://alfareed.admin.t-carts.com${imagePath}`;
+      return `https://ekhtarktabak.t-carts.com${imagePath}`;
     }
     return imagePath;
   };

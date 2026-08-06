@@ -18,7 +18,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-const API_URL = "https://alfareed.admin.t-carts.com/api";
+const API_URL = "https://ekhtarktabak.t-carts.com/api";
 
 // تعريف واجهات
 interface VariantAttribute {
@@ -165,7 +165,7 @@ const transformProductForCard = (product: any): TransformedProduct => {
   const cleanImageUrl = (url: string) => {
     if (!url) return "/images/placeholder-product.jpg";
     if (url.startsWith("/storage")) {
-      return `https://alfareed.admin.t-carts.com${url}`;
+      return `https://ekhtarktabak.t-carts.com${url}`;
     }
     return url;
   };

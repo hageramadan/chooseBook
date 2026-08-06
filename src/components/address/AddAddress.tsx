@@ -130,7 +130,7 @@ export default function AddAddress({
   const [isLoadingGovernorates, setIsLoadingGovernorates] = useState(true);
   const [isLoadingCities, setIsLoadingCities] = useState(false);
 
-  const API_URL = "https://alfareed.admin.t-carts.com/api";
+  const API_URL = "https://ekhtarktabak.t-carts.com/api";
 
   // --- جلب المحافظات من الـ API ---
   useEffect(() => {

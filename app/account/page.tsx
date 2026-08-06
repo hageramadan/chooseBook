@@ -42,7 +42,7 @@ export default function AccountPage() {
     }
     
     // إذا كان مسارًا نسبيًا
-    return `https://alfareed.admin.t-carts.com${imagePath}`;
+    return `https://ekhtarktabak.t-carts.com${imagePath}`;
   };
 
   // دالة لجلب رصيد المحفظة من الـ API
@@ -58,7 +58,7 @@ export default function AccountPage() {
         return;
       }
 
-      const apiUrl = "https://alfareed.admin.t-carts.com/api";
+      const apiUrl = "https://ekhtarktabak.t-carts.com/api";
       const response = await fetch(`${apiUrl}/wallet`, {
         method: "GET",
         headers: getHeaders(),

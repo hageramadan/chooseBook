@@ -13,7 +13,7 @@ interface PromoCodeInputProps {
   appliedCode: string;
 }
 
-const API_URL = 'https://alfareed.admin.t-carts.com/api';
+const API_URL = 'https://ekhtarktabak.t-carts.com/api';
 
 //  دالة جلب التوكن
 const getToken = (): string | null => {
