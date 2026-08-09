@@ -17,7 +17,7 @@ export default function ProductsLoading() {
               </div>
             </div>
 
-            <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-2 lg:gap-6">
               {[1, 2, 3, 4, 5, 6].map((i) => (
                 <div key={i} className="animate-pulse">
                   <div className="bg-gray-200 rounded-lg h-64 mb-3"></div>

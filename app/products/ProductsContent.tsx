@@ -100,14 +100,28 @@ const extractColorsFromVariants = (
 
 export default function ProductsContent() {
   const searchParams = useSearchParams();
-  const { t } = useTranslation();
+const { t } = useTranslation();
 
+const categoriesParam = searchParams.get("categories");
+
+const categoryIdsFromUrl = (() => {
+  if (!categoriesParam) return [];
+
+  try {
+    const parsed = JSON.parse(categoriesParam);
+    return Array.isArray(parsed) ? parsed : [];
+  } catch {
+    console.error("Error parsing categories param");
+    return [];
+  }
+})();
   const [products, setProducts] = useState<ProductData[]>([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const [lastPage, setLastPage] = useState(1);
   const [totalProducts, setTotalProducts] = useState(0);
   const [filters, setFilters] = useState<FiltersState>({});
+  const [isUrlReady, setIsUrlReady] = useState(false);
   const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
   const [categoryName, setCategoryName] = useState<string | null>(null);
   
@@ -117,29 +131,52 @@ export default function ProductsContent() {
   const abortControllerRef = useRef<AbortController | null>(null);
   const isFilterChangeRef = useRef(false);
 
-  useEffect(() => {
-    const categoriesParam = searchParams.get("categories");
-    if (categoriesParam) {
-      try {
-        const categoryIds = JSON.parse(categoriesParam);
-        if (categoryIds && categoryIds.length > 0) {
-          const categoryId = categoryIds[0];
-          setFilters((prev) => ({ ...prev, categoryIds: [categoryId] }));
+useEffect(() => {
+  const initializeCategory = async () => {
+    // مفيش category في URL
+    if (categoryIdsFromUrl.length === 0) {
+      setFilters((prev) => {
+        if (!prev.categoryIds?.length) return prev;
 
-          const fetchCategoryName = async () => {
-            const categories = await getCategories();
-            const category = categories.find((c) => c.id === categoryId);
-            if (category) {
-              setCategoryName(category.name);
-            }
-          };
-          fetchCategoryName();
-        }
-      } catch (e) {
-        console.error("Error parsing categories param:", e);
-      }
+        const { categoryIds, ...rest } = prev;
+        return rest;
+      });
+
+      setCategoryName(null);
+      setIsUrlReady(true);
+      return;
     }
-  }, [searchParams]);
+
+    const categoryId = Number(categoryIdsFromUrl[0]);
+
+    if (!Number.isFinite(categoryId)) {
+      setIsUrlReady(true);
+      return;
+    }
+
+    // نحط category القادمة من URL مباشرة
+    setFilters((prev) => ({
+      ...prev,
+      categoryIds: [categoryId],
+    }));
+
+    try {
+      const categories = await getCategories();
+      const category = categories.find((c) => c.id === categoryId);
+
+      if (category) {
+        setCategoryName(category.name);
+      }
+    } catch (error) {
+      console.error("Error loading category:", error);
+    } finally {
+      setIsUrlReady(true);
+    }
+  };
+
+  setIsUrlReady(false);
+  initializeCategory();
+}, [categoriesParam]);
 
   const loadProducts = useCallback(async () => {
     if (abortControllerRef.current) {
@@ -155,9 +192,9 @@ export default function ProductsContent() {
         per_page: perPage,
       };
 
-      if (filters.categoryIds && filters.categoryIds.length > 0) {
-        filterParams.categories = filters.categoryIds;
-      }
+     if (filters.categoryIds && filters.categoryIds.length > 0) {
+  filterParams.categories = filters.categoryIds;
+}
       if (filters.colors && filters.colors.length > 0) {
         filterParams.colors = filters.colors;
       }
@@ -197,19 +234,19 @@ export default function ProductsContent() {
   }, [currentPage, filters, perPage]);
 
   useEffect(() => {
-    if (hasLoadedRef.current || isFilterChangeRef.current) {
-      loadProducts();
-    } else {
-      hasLoadedRef.current = true;
-      loadProducts();
+  // ممنوع تحميل المنتجات قبل قراءة category من URL
+  if (!isUrlReady) {
+    return;
+  }
+
+  loadProducts();
+
+  return () => {
+    if (abortControllerRef.current) {
+      abortControllerRef.current.abort();
     }
-    
-    return () => {
-      if (abortControllerRef.current) {
-        abortControllerRef.current.abort();
-      }
-    };
-  }, [loadProducts]);
+  };
+}, [loadProducts, isUrlReady]);
 
   const handleFilterChange = (newFilters: any) => {
     const updatedFilters: FiltersState = {};
@@ -345,7 +382,7 @@ export default function ProductsContent() {
                     {t("products.home")}
                   </Link>
                   <span>/</span>
-                  <h1 className="text-base md:text-xl font-bold text-[#180100]">
+                  <h1 className="text-base md:text-xl font-bold text-[#180100] line-clamp-1">
                     {categoryName ? ` ${categoryName}` : t("products.allProducts")}
                   </h1>
                 </div>
@@ -366,7 +403,7 @@ export default function ProductsContent() {
               <LoadingSpinner size="lg" text={t("products.loading")} />
             ) : products.length > 0 ? (
               <>
-                <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid grid-cols-2 lg:grid-cols-3 gap-2 lg:gap-6">
                   {products.map((product) => {
                     const cardData = transformProductForCard(product);
                     return (
