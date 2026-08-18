@@ -6,10 +6,13 @@ import { FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
 import toast, { Toaster } from "react-hot-toast";
 import PhoneInput from "@/components/contact/PhoneInput";
 import { useAuth } from "@/contexts/AuthContext";
+import { useTranslation } from "@/hooks/useTranslation";
+
 
 export default function LoginWithPhone() {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const { t } = useTranslation();
   const { loginWithPhone, loading, isAuthenticated } = useAuth();
   const [showPassword, setShowPassword] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -37,12 +40,12 @@ export default function LoginWithPhone() {
   useEffect(() => {
     const registered = searchParams.get("registered");
     if (registered === "true") {
-      toast.success("تم إنشاء الحساب بنجاح! يرجى تسجيل الدخول ", {
+      toast.success(t("auth.registrationSuccess"), {
         duration: 5000,
         position: "top-center",
       });
     }
-  }, [searchParams]);
+  }, [searchParams, t]);
 
   // معالج تغيير رقم الهاتف
   const handlePhoneChange = (phoneNumber: string, countryCode: string) => {
@@ -60,9 +63,14 @@ export default function LoginWithPhone() {
   const validateForm = (): boolean => {
     const newErrors: typeof errors = {};
 
-    //  التحقق من رقم الهاتف - فقط أن الحقل ليس فارغاً
+    // التحقق من رقم الهاتف - فقط أن الحقل ليس فارغاً
     if (!formData.phoneNumber) {
-      newErrors.phone = "رقم الهاتف مطلوب";
+      newErrors.phone = t("auth.phoneRequired");
+    }
+
+    // التحقق من كلمة المرور - نفس الـ Validation من كود البريد الإلكتروني
+    if (!formData.password) {
+      newErrors.password = t("auth.passwordRequired");
     }
 
     setErrors(newErrors);
@@ -90,30 +98,24 @@ export default function LoginWithPhone() {
     );
 
     if (result.success) {
-      toast.success(result.message || "تم إرسال رمز التحقق إلى هاتفك! ", {
+      toast.success(result.message || t("auth.otpSent"), {
         duration: 3000,
         position: "top-center",
       });
       
-      //  التوجيه إلى صفحة OTP بعد تسجيل الدخول
+      // التوجيه إلى الصفحة الرئيسية بعد تسجيل الدخول
       const fullPhone = `${formData.countryCode}${formData.phoneNumber}`;
       setTimeout(() => {
-        router.push(`/auth/verify-otp/phone?phone=${encodeURIComponent(fullPhone)}&isLogin=true`);
+        router.push(`/`);
       }, 1500);
     } else {
-      toast.error(result.message || "فشل تسجيل الدخول. يرجى التحقق من بياناتك", {
+      toast.error(result.message || t("auth.loginFailed"), {
         duration: 4000,
         position: "top-center",
       });
     }
 
     setIsSubmitting(false);
-  };
-
-  const clearPasswordError = () => {
-    if (errors.password) {
-      setErrors((prev) => ({ ...prev, password: undefined }));
-    }
   };
 
   const isLoading = loading || isSubmitting;
@@ -127,15 +129,15 @@ export default function LoginWithPhone() {
             <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8">
               {/* العنوان */}
               <div className="text-center mb-8">
-                <h1 className="text-xl font-bold text-gray-800 mb-2">تسجيل الدخول</h1>
-                <p className="text-gray-500 text-sm">يرجى إدخال رقم الهاتف</p>
+                <h1 className="text-xl font-bold text-gray-800 mb-2">{t("auth.login")}</h1>
+                <p className="text-gray-500 text-sm">{t("auth.enterPhoneNumber")}</p>
               </div>
 
               <form onSubmit={handleSubmit}>
                 {/* رقم الهاتف */}
                 <div className="mb-5">
                   <label className="block text-gray-700 font-medium mb-2">
-                    رقم الهاتف <span className="text-red-500">*</span>
+                    {t("auth.phoneNumber")} <span className="text-red-500">*</span>
                   </label>
                   <PhoneInput
                     value={`${formData.countryCode}${formData.phoneNumber}`}
@@ -146,31 +148,35 @@ export default function LoginWithPhone() {
                     <p className="text-red-500 text-xs mt-1">{errors.phone}</p>
                   )}
                 </div>
-<div className="mb-6">
+                
+                <div className="mb-6">
                   <label className="block text-gray-700 font-medium mb-2">
-                    كلمة المرور <span className="text-red-500">*</span>
+                    {t("auth.password")} <span className="text-red-500">*</span>
                   </label>
                   <div className="relative">
-                    <FaLock className="absolute  start-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+                    <FaLock className="absolute start-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
                     <input
                       type={showPassword ? "text" : "password"}
                       value={formData.password}
                       onChange={(e) => {
                         setFormData({ ...formData, password: e.target.value });
-                        // clearFieldError("password");
+                        // مسح خطأ كلمة المرور عند الكتابة
+                        if (errors.password) {
+                          setErrors((prev) => ({ ...prev, password: undefined }));
+                        }
                       }}
-                      placeholder="•••••••• (6 أحرف على الأقل)"
+                      placeholder={t("auth.passwordPlaceholder")}
                       disabled={isLoading}
-                      className={`w-full px-4 text-sm  py-2  ps-10  pe-10 border rounded-[8px] focus:ring-2 focus:ring-black focus:border-black outline-none transition-colors ${
+                      className={`w-full px-4 text-sm py-2 ps-10 pe-10 border rounded-[8px] focus:ring-2 focus:ring-black focus:border-black outline-none transition-colors ${
                         errors.password ? "border-red-500" : "border-gray-300"
                       } ${isLoading ? "opacity-50" : ""}`}
-                      dir="rtl"
+                     
                     />
                     <button
                       type="button"
                       onClick={() => setShowPassword(!showPassword)}
                       disabled={isLoading}
-                      className="absolute  end-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                      className="absolute end-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700"
                     >
                       {showPassword ? <FaEyeSlash /> : <FaEye />}
                     </button>
@@ -181,6 +187,7 @@ export default function LoginWithPhone() {
                     </p>
                   )}
                 </div>
+                
                 {/* زر تسجيل الدخول */}
                 <button
                   type="submit"
@@ -192,23 +199,23 @@ export default function LoginWithPhone() {
                   {isLoading ? (
                     <>
                       <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                      جاري تسجيل الدخول...
+                      {t("auth.loggingIn")}
                     </>
                   ) : (
-                    "تسجيل الدخول"
+                    t("auth.login")
                   )}
                 </button>
 
                 {/* رابط إنشاء حساب جديد */}
                 <div className="text-center mt-6 pt-4 border-t border-gray-200">
                   <p className="text-gray-600 text-sm">
-                    ليس لديك حساب؟{" "}
+                    {t("auth.noAccount")}{" "}
                     <button
                       type="button"
                       onClick={() => router.push("/auth/register/phone")}
                       className="text-[#23A6F0] font-medium hover:underline"
                     >
-                      إنشاء حساب جديد
+                      {t("auth.register")}
                     </button>
                   </p>
                 </div>

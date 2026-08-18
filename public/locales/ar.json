@@ -17,8 +17,10 @@
     "wishlist": "المفضلة",
     "shopNow": "تسوق الان"
   },
-  "auth": {
-        "resetTokenNotFound": "رمز التحقق غير موجود. يرجى المحاولة مرة أخرى",
+    "auth": {
+    "enterPhoneNumber": "أدخل رقم هاتفك",
+    "phoneNumber": "رقم الهاتف",
+    "resetTokenNotFound": "رمز التحقق غير موجود. يرجى المحاولة مرة أخرى",
     "emailMismatch": "البريد الإلكتروني غير متطابق. يرجى المحاولة مرة أخرى",
     "unexpectedError": "حدث خطأ غير متوقع",
     "back": "رجوع",
@@ -136,7 +138,30 @@
     "resetting": "جاري إعادة التعيين...",
     "resetSuccess": "تم إعادة تعيين كلمة المرور بنجاح! ",
     "resetFailed": "فشل إعادة تعيين كلمة المرور",
-    "verifySuccess": "تم التحقق بنجاح! "
+    "verifySuccess": "تم التحقق بنجاح! ",
+  
+    "phoneRequired": "رقم الهاتف مطلوب",
+  
+    "otpSent": "تم إرسال رمز التحقق إلى هاتفك",
+  
+    "registrationSuccess": "تم التسجيل بنجاح! يرجى تسجيل الدخول",
+    "otpVerification": "التحقق من الهاتف",
+    "otpLoginVerification": "التحقق من تسجيل الدخول",
+    "otpRegisterVerification": "تفعيل الحساب",
+    "otpLoginMessage": "أدخل الرقم المكون من 6 أرقام الذي أرسلناه إلى هاتفك لتأكيد تسجيل الدخول",
+    "otpRegisterMessage": "أدخل الرقم المكون من 6 أرقام الذي أرسلناه إلى هاتفك لتفعيل حسابك",
+    "otpDefaultMessage": "أدخل الرقم المكون من 6 أرقام الذي أرسلناه إلى هاتفك للتحقق",
+    "otpRequired": "يرجى إدخال رمز التحقق المكون من 6 أرقام",
+    "otpVerified": "تم التحقق بنجاح! جاري توجيهك... 🎉",
+    "otpInvalid": "رمز التحقق غير صحيح",
+
+    "resendWait": "لم تستلم الرمز؟",
+    "resendSeconds": "إعادة الإرسال ({seconds} ثانية)",
+    "waitBeforeResend": "الرجاء الانتظار قبل إعادة الإرسال",
+    "codeResent": "تم إرسال رمز جديد إلى هاتفك",
+  
+    "phoneRequiredForOTP": "رقم الهاتف مطلوب للتحقق"
+  
   },
 
   "ads": {
@@ -271,7 +296,7 @@
     "emptyMessage": "لم تقم بإضافة أي منتجات إلى قائمة المفضلة بعد",
     "exploreProducts": "استكشاف المنتجات",
     "loading": "جاري تحميل المفضلة...",
-    "itemsCount": "{count} منتاجات",
+    "itemsCount": "{count} منتجات",
     "itemCount": "{count} منتج",
     "clearAll": "حذف الكل",
     "clearSuccess": "تم حذف جميع المنتجات من المفضلة",

@@ -10,7 +10,7 @@ export default function Login() {
         <div className="w-10 h-10 border-4 border-[#23A6F0] border-t-transparent rounded-full animate-spin"></div>
       </div>
     }>
-      <LoginWithEmail />
+      <LoginWithPhone />
     </Suspense>
   );
 }

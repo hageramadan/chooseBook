@@ -26,7 +26,7 @@ const getTranslations = (lang: string) => {
       loading: "Loading...",
       noCategories: "No categories",
       home: "Home",
-      allRightsReserved: "All Rights Reserved  © T Carts 2026",
+allRightsReserved: "Powered by",
       storeName: "Your perfect store, everything you need",
     };
   }
@@ -45,7 +45,7 @@ const getTranslations = (lang: string) => {
     loading: "جاري التحميل...",
     noCategories: "لا توجد فئات",
     home: "الرئيسية",
-    allRightsReserved: "جميع الحقوق محفوظة   © T Carts 2026",
+allRightsReserved: "Powered by",
     storeName: "متجرك المثالي هنا كل ما تريد",
   };
 };
@@ -316,9 +316,7 @@ export function Footer() {
         {/* footer bottom -  استخدام الترجمات */}
         <div className="border-t border-white/20 pt-6 md:pt-8 pb-16 lg:pb-0">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-white/60 font-bold text-sm">
-              {t.allRightsReserved} 
-            </p>
+          
 
             <div className="flex gap-6">
               <Link 
@@ -334,7 +332,23 @@ export function Footer() {
                 {settingsLoading ? t.loading : settings?.privacy_policy || t.privacy}
               </Link>
             </div>
-
+<Link
+              href="https://t-carts.com/"
+              aria-label="t-carts website"
+              className="flex items-center gap-1"
+              target="_blank"
+            >
+              <Image
+                src="/t-carts.png"
+                alt="t-carts logo"
+                width={30}
+                height={20}
+                className="w-[85px] h-4"
+              />
+              <p className="text-white/60 font-bold text-sm">
+                {t.allRightsReserved}
+              </p>
+            </Link>
             {/* social - استخدام الصور بدلاً من الأيقونات */}
             <div className="flex gap-4">
               {socialLinks.map((social, index) => (

@@ -521,7 +521,7 @@ export function Hero({ onLoad }: HeroProps) {
           </p>
     
           {/* الأزرار - pointer-events-auto للسماح بالنقر */}
-          <div className="flex gap-4 pointer-events-auto justify-center">
+          {/* <div className="flex gap-4 pointer-events-auto justify-center">
             <Button
               asChild
               className="text-white text-[14px] sm:text-[16px] font-bold rounded-xl hover:scale-105 transition-transform duration-300"
@@ -540,7 +540,7 @@ export function Hero({ onLoad }: HeroProps) {
             </Button>
 
         
-          </div>
+          </div> */}
         </div>
       </div>
     </section>

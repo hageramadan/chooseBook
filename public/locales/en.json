@@ -17,8 +17,10 @@
     "wishlist": "Wishlist",
     "shopNow": "Shop Now"
   },
-  "auth": {
-     "resetTokenNotFound": "Verification code not found. Please try again",
+ "auth": {
+    "enterPhoneNumber": "Enter your phone number ",
+    "phoneNumber": "Phone Number",
+    "resetTokenNotFound": "Verification code not found. Please try again",
     "emailMismatch": "Email mismatch. Please try again",
     "unexpectedError": "An unexpected error occurred",
     "back": "Back",
@@ -73,7 +75,7 @@
     "registerFailed": "Error creating account",
     "creatingAccount": "Creating account...",
     "haveAccount": "Already have an account?",
-        "newPassword": "New Password",
+    "newPassword": "New Password",
     "newPasswordRequired": "New password is required",
     "newPasswordPlaceholder": "•••••••• (at least 6 characters)",
     "createNewPassword": "Create New Password",
@@ -82,7 +84,29 @@
     "resetting": "Resetting...",
     "resetSuccess": "Password reset successfully! ",
     "resetFailed": "Failed to reset password",
-    "verifySuccess": "Verification successful! "
+    "verifySuccess": "Verification successful! ",
+
+    "phoneRequired": "Phone number is required",
+
+    "otpSent": "Verification code sent to your phone",
+
+    "registrationSuccess": "Registration successful! Please login",
+    "otpVerification": "Phone Verification",
+    "otpLoginVerification": "Login Verification",
+    "otpRegisterVerification": "Account Activation",
+    "otpLoginMessage": "Enter the 6-digit code we sent to your phone to confirm login",
+    "otpRegisterMessage": "Enter the 6-digit code we sent to your phone to activate your account",
+    "otpDefaultMessage": "Enter the 6-digit code we sent to your phone for verification",
+    "otpRequired": "Please enter the 6-digit verification code",
+    "otpVerified": "Verification successful! Redirecting... 🎉",
+    "otpInvalid": "Invalid verification code",
+
+    "resendWait": "Didn't receive code?",
+    "resendSeconds": "Resend in ({seconds} seconds)",
+    "waitBeforeResend": "Please wait before resending",
+    "codeResent": "New code sent to your phone",
+
+    "phoneRequiredForOTP": "Phone number is required for verification"
   },
   "ads": {
     "limitedTime": "Limited Time",

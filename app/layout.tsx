@@ -64,6 +64,11 @@ export async function generateMetadata(): Promise<Metadata> {
       title: title,
       description: description,
     },
+    icons: {
+      icon: [
+        { url: "/logo.png", type: "image/png" }
+      ],
+    },
   };
 }
 

@@ -706,7 +706,7 @@ export default function ProductFilters({ onFilterChange, isMobile = false, onClo
                 <label className="block text-xs text-gray-500 mb-1">{t('filter.maxPrice')}</label>
                 <input
                   type="number"
-                  value={tempMaxPrice || ''}
+                  value={tempMaxPrice || '0'}
                   onChange={handleMaxPriceInputChange}
                   className="w-full px-3 py-2 border border-gray-3000 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-[#23A6F0]"
                   placeholder="الحد الأقصى"
@@ -716,7 +716,7 @@ export default function ProductFilters({ onFilterChange, isMobile = false, onClo
                 <label className="block text-xs text-gray-500 mb-1">{t('filter.minPrice')}</label>
                 <input
                   type="number"
-                  value={tempMinPrice || ''}
+                  value={tempMinPrice || '0'}
                   onChange={handleMinPriceInputChange}
                   className="w-full px-3 py-2 border border-gray-3000 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-[#23A6F0]"
                   placeholder="الحد الأدنى"

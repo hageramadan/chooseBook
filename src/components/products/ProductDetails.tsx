@@ -654,7 +654,7 @@ const getMaxQuantity = (): number => {
           {product.brand || t("products.title")}
         </Link>
         <span className="text-[#180100] font-bold">/</span>
-        <p className="text-[#180100] font-bold truncate max-w-[150px]">
+       <p className="text-[#180100] text-sm  truncate max-w-[200px] lg:max-w-[250px]">
           {product.name}
         </p>
       </div>
