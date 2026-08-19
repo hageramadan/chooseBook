@@ -134,14 +134,14 @@ export default function SavedAddresses({
               <div className="flex gap-2">
                 <button
                   onClick={() => onEdit(address)}
-                  className="text-[#23A6F0] transition p-2 hover:bg-[#23A6F0] rounded-full"
+                  className="text-primary transition p-2 hover:bg-main-dark rounded-full"
                   aria-label={t('address.edit')}
                 >
                   <CiEdit className="w-5 h-5" />
                 </button>
                 <button
                   onClick={() => handleDeleteClick(address.id)}
-                  className="text-red-500 hover:text-red-700 transition p-2 hover:bg-blue-50 rounded-full"
+                  className="text-red-500 hover:text-red-700 transition p-2 hover:bg-main-light rounded-full"
                   aria-label={t('address.delete')}
                 >
                   <FaRegTrashAlt />

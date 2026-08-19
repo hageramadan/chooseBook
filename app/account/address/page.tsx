@@ -126,7 +126,7 @@ export default function AddressPage() {
                 setEditingAddress(null);
                 setShowAddAddress(true);
               }}
-              className="flex items-center gap-2 text-[#23A6F0] hover:text-[#fa7d10] transition-colors"
+              className="flex items-center gap-2 text-primary hover:text-[#fa7d10] transition-colors"
               aria-label={t('address.addNew')}
             >
               <BsFillPlusCircleFill className="w-10 h-10" />

@@ -1,31 +1,326 @@
+/* app/globals.css */
 @import "leaflet/dist/leaflet.css";
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@layer components {
-  .container-custom {
-    @apply container mx-auto px-4 md:px-6 lg:px-8;
-  }
+/* ============================================
+   CSS Variables - سيتم تحديثها ديناميكياً من الـ API
+   ============================================ */
+:root {
+  /* الألوان الأساسية من الـ API - سيتم تحديثها بواسطة ThemeStyles */
+  --main-color: #246487;
+  --secondary-color: #D56A2D;
+  --main-color-light: #24648720;
+  --main-color-dark: #246487CC;
+  --secondary-color-light: #D56A2D20;
+  --secondary-color-dark: #D56A2DCC;
+  
+  /* ألوان إضافية */
+  --ring: 0 0% 0%;
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  --text-light: #999999;
+  --white: #FFFFFF;
+  --gray-100: #F7F7F7;
+  --gray-200: #E5E5E5;
+  --gray-300: #D4D4D4;
+  --gray-400: #A0AEC0;
+  --gray-500: #718096;
 }
 
+/* ============================================
+   كلاسات الألوان الرئيسية للاستخدام في جميع أنحاء الموقع
+   ============================================ */
+
+/* خلفيات */
+.bg-primary {
+  background-color: var(--main-color) !important;
+}
+.bg-secondary {
+  background-color: var(--secondary-color) !important;
+}
+.bg-primary-light {
+  background-color: var(--main-color-light) !important;
+}
+.bg-secondary-light {
+  background-color: var(--secondary-color-light) !important;
+}
+.bg-primary-gradient {
+  background: linear-gradient(135deg, var(--main-color), var(--main-color-dark)) !important;
+}
+.bg-secondary-gradient {
+  background: linear-gradient(135deg, var(--secondary-color), var(--secondary-color-dark)) !important;
+}
+
+/* النصوص */
+.text-primary {
+  color: var(--main-color) !important;
+}
+.hover\:text-primary:hover {
+  color: var(--main-color) !important;
+}
+.text-secondary {
+  color: var(--secondary-color) !important;
+}
+.text-primary-hover:hover {
+  color: var(--main-color) !important;
+}
+.text-secondary-hover:hover {
+  color: var(--secondary-color) !important;
+}
+
+/* الحدود */
+.border-primary {
+  border-color: var(--main-color) !important;
+}
+.border-secondary {
+  border-color: var(--secondary-color) !important;
+}
+.border-primary-light {
+  border-color: var(--main-color-light) !important;
+}
+.border-secondary-light {
+  border-color: var(--secondary-color-light) !important;
+}
+
+/* الظلال */
+.shadow-primary {
+  box-shadow: 0 4px 20px var(--main-color-light) !important;
+}
+.shadow-secondary {
+  box-shadow: 0 4px 20px var(--secondary-color-light) !important;
+}
+.shadow-primary-hover:hover {
+  box-shadow: 0 8px 30px var(--main-color-light) !important;
+}
+
+/* ============================================
+   الأزرار المخصصة
+   ============================================ */
+.btn-primary {
+  background-color: var(--main-color);
+  color: var(--white);
+  padding: 10px 24px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.btn-primary:hover {
+  background-color: var(--main-color-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px var(--main-color-light);
+}
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  background-color: var(--secondary-color);
+  color: var(--white);
+  padding: 10px 24px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.btn-secondary:hover {
+  background-color: var(--secondary-color-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px var(--secondary-color-light);
+}
+.btn-secondary:active {
+  transform: translateY(0);
+}
+
+.btn-outline-primary {
+  background-color: transparent;
+  color: var(--main-color);
+  padding: 10px 24px;
+  border: 2px solid var(--main-color);
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.btn-outline-primary:hover {
+  background-color: var(--main-color);
+  color: var(--white);
+}
+
+.btn-outline-secondary {
+  background-color: transparent;
+  color: var(--secondary-color);
+  padding: 10px 24px;
+  border: 2px solid var(--secondary-color);
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.btn-outline-secondary:hover {
+  background-color: var(--secondary-color);
+  color: var(--white);
+}
+
+/* ============================================
+   الروابط المخصصة
+   ============================================ */
+.link-primary {
+  color: var(--main-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.link-primary:hover {
+  color: var(--main-color-dark);
+  text-decoration: underline;
+}
+
+.link-secondary {
+  color: var(--secondary-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.link-secondary:hover {
+  color: var(--secondary-color-dark);
+  text-decoration: underline;
+}
+
+/* ============================================
+   عناوين الأقسام
+   ============================================ */
+.section-title {
+  position: relative;
+  display: inline-block;
+  color: var(--text-primary);
+  font-weight: 700;
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+}
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  right: 0;
+  width: 60px;
+  height: 4px;
+  background-color: var(--main-color);
+  border-radius: 2px;
+}
+
+.section-title-center {
+  position: relative;
+  display: inline-block;
+  color: var(--text-primary);
+  font-weight: 700;
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+}
+.section-title-center::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background-color: var(--main-color);
+  border-radius: 2px;
+}
+
+/* ============================================
+   البادجات والعلامات
+   ============================================ */
+.badge-primary {
+  background-color: var(--main-color);
+  color: var(--white);
+  padding: 4px 12px;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  display: inline-block;
+}
+.badge-secondary {
+  background-color: var(--secondary-color);
+  color: var(--white);
+  padding: 4px 12px;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  display: inline-block;
+}
+.badge-outline-primary {
+  background-color: transparent;
+  color: var(--main-color);
+  padding: 4px 12px;
+  border: 2px solid var(--main-color);
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  display: inline-block;
+}
+
+/* ============================================
+   النماذج والحقول
+   ============================================ */
+.input-primary:focus {
+  border-color: var(--main-color);
+  box-shadow: 0 0 0 3px var(--main-color-light);
+  outline: none;
+}
+.input-secondary:focus {
+  border-color: var(--secondary-color);
+  box-shadow: 0 0 0 3px var(--secondary-color-light);
+  outline: none;
+}
+
+/* ============================================
+   ستايلات Wallet (المحفظة) - محتفظ بها كما هي
+   ============================================ */
 .bg-wallet {
-  background-color: #0A05000A; /* لون خلفية المحفظة */
+  background-color: #0A05000A;
 }
 .bg-card-wallet {
-  /* background: linear-gradient(#0a05009f, #0A05000A); */
-  /* background:linear-gradient(to left) */
   background: linear-gradient(270deg, #0A05008F, #0A0500);
 }
 
-label{
-  font-size: 14px;
+/* ============================================
+   ستايلات Status (حالة الطلبات)
+   ============================================ */
+.status-pending {
+  background-color: #A0AEC03D;
+  color: #A0AEC0;
 }
-          
-/* app/search/page.module.css */
+.status-processing {
+  background-color: #ED89363D;
+  color: #ED8936;
+}
+.status-ready {
+  background-color: #A0AEC03D;
+  color: #A0AEC0;
+}
+.status-delivering {
+  background-color: #F6AD553D;
+  color: #F6AD55;
+}
+.status-delivered {
+  background-color: #48BB783D;
+  color: #48BB78;
+}
+.status-cancelled {
+  background-color: #F565653D;
+  color: #F56565;
+}
+
+/* ============================================
+   Grid Systems
+   ============================================ */
 .search-grid,
-.wishlist-grid  {
+.wishlist-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1.5rem;
@@ -35,7 +330,7 @@ label{
 /* للشاشات المتوسطة (تابلت) */
 @media (max-width: 1024px) {
   .search-grid,
-.wishlist-grid  {
+  .wishlist-grid {
     grid-template-columns: repeat(3, 1fr);
     gap: 1.25rem;
   }
@@ -44,7 +339,7 @@ label{
 /* للشاشات الصغيرة (موبايل) */
 @media (max-width: 768px) {
   .search-grid,
-.wishlist-grid  {
+  .wishlist-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
   }
@@ -53,57 +348,15 @@ label{
 /* للشاشات الصغيرة جداً */
 @media (max-width: 480px) {
   .search-grid,
-.wishlist-grid  {
+  .wishlist-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 0.75rem;
   }
 }
-:root {
-  --ring: 0 0% 0%; /* تغيير لون الـ ring للأسود */
-}
 
-/* أو إضافة هذا الكود */
-[data-radix-select-content] [data-state="checked"] {
-  background-color: #e5e7eb !important;
-  color: black !important;
-}
-
-/* status colors */
-.status-pending {
-  /* background-color: #A0AEC03D;
-  color: #A0AEC0; */
-  background-color: #f181173D; color: #f18117; 
-}
-.status-processing {
-  background-color: #ED89363D;
-  color: #ED8936;
-}
-.status-ready {
-  background-color: #A0AEC03D;
-  color: #A0AEC0;
-}
-.status-delivering {
-  background-color: #F6AD553D;
-  color: #F6AD55;
-}
-.status-delivered {
-  background-color: #48BB783D;
-  color: #48BB78;
-}
-.status-cancelled {
-  background-color: #F565653D;
-  color: #F56565;
-}
-
-
-
-@media (min-width: 1024px) {
-  .page-with-padding {
-    padding-top: 3rem; /* 96px */
-  }
-}
-
-
+/* ============================================
+   الأنيميشن والانتقالات
+   ============================================ */
 @keyframes slideIn {
   from {
     transform: translateX(100%);
@@ -122,111 +375,6 @@ label{
   }
 }
 
-.animate-slide-in {
-  animation: slideIn 0.3s ease-out forwards;
-}
-
-.animate-slide-out {
-  animation: slideOut 0.3s ease-out forwards;
-}
-
-
-
-/* app/globals.css */
-
- @media (maxWidth: 640px){
-.custom-width-192{
-  width: 150px;
-  height: 150px;
-}
- }
-
-
- 
-:root {
-  --ring: 0 0% 0%; /* تغيير لون الـ ring للأسود */
-}
-
-/* أو إضافة هذا الكود */
-[data-radix-select-content] [data-state="checked"] {
-  background-color: #e5e7eb !important;
-  color: black !important;
-}
-
-/* status colors */
-.status-pending {
-  background-color: #A0AEC03D;
-  color: #A0AEC0;
-}
-.status-processing {
-  background-color: #ED89363D;
-  color: #ED8936;
-}
-.status-ready {
-  background-color: #9F7AEA3D;
-  color: #9F7AEA;
-}
-.status-delivering {
-  background-color: #F6AD553D;
-  color: #F6AD55;
-}
-.status-delivered {
-  background-color: #48BB783D;
-  color: #48BB78;
-}
-.status-cancelled {
-  background-color: #F565653D;
-  color: #F56565;
-}
-
-.page-with-padding {
-  padding-top: 1rem; /* 80px */
-}
-
-@media (min-width: 1024px) {
-  .page-with-padding {
-    padding-top: 2rem; /* 96px */
-  }
-}
-
-
-@keyframes slideIn {
-  from {
-    transform: translateX(100%);
-  }
-  to {
-    transform: translateX(0);
-  }
-}
-
-@keyframes slideOut {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(100%);
-  }
-}
-
-.animate-slide-in {
-  animation: slideIn 0.3s ease-out forwards;
-}
-
-.animate-slide-out {
-  animation: slideOut 0.3s ease-out forwards;
-}
-
-
-
-/* app/globals.css */
-
- @media (maxWidth: 640px){
-.custom-width-192{
-  width: 150px;
-  height: 150px;
-}
- }
-/* app/globals.css */
 @keyframes fade-in {
   from {
     opacity: 0;
@@ -249,33 +397,63 @@ label{
   }
 }
 
+@keyframes pulse-primary {
+  0%, 100% {
+    box-shadow: 0 0 0 0 var(--main-color-light);
+  }
+  50% {
+    box-shadow: 0 0 0 10px transparent;
+  }
+}
+
+.animate-slide-in {
+  animation: slideIn 0.3s ease-out forwards;
+}
+.animate-slide-out {
+  animation: slideOut 0.3s ease-out forwards;
+}
 .animate-fade-in {
   animation: fade-in 0.6s ease-out;
 }
-
 .animate-slide-down {
   animation: slide-down 0.3s ease-out;
 }
+.animate-pulse-primary {
+  animation: pulse-primary 1.5s infinite;
+}
+
+/* ============================================
+   ستايلات عامة وتحسينات
+   ============================================ */
+@layer components {
+  .container-custom {
+    @apply container mx-auto px-4 md:px-6 lg:px-8;
+  }
+}
+
+label {
+  font-size: 14px;
+}
 
 /* تحسين التمرير */
-/* ::-webkit-scrollbar {
+/* يمكنك تفعيل هذا الجزء إذا أردت */
+/*
+::-webkit-scrollbar {
   width: 7px;
   height: 8px;
 }
-
 ::-webkit-scrollbar-track {
   background: #f1f1f1;
   border-radius: 10px;
 }
-
 ::-webkit-scrollbar-thumb {
-  background: #23A6F0;
+  background: var(--main-color);
   border-radius: 10px;
 }
-
 ::-webkit-scrollbar-thumb:hover {
-  background: #1a8fd0;
-} */
+  background: var(--main-color-dark);
+}
+*/
 
 /* تحسين التركيز */
 *:focus {
@@ -293,111 +471,86 @@ img {
   height: auto;
 }
 
- @media (maxWidth: 640px){
-.custom-width-192{
-  width: 150px;
-  height: 150px;
-}
- }
-.bg-wallet {
-  background-color: #0A05000A; /* لون خلفية المحفظة */
-}
-.bg-card-wallet {
-  /* background: linear-gradient(#0a05009f, #0A05000A); */
-  /* background:linear-gradient(to left) */
-  background: linear-gradient(270deg, #0A05008F, #0A0500);
-}
-
-/* app/globals.css */
-
-
-/* app/globals.css */
-/* main {
-  padding-top: 5rem; 
-  
-}
-
-@media (min-width: 1024px) {
-  main {
-    padding-top: 6rem; 
-  }
-} */
-
-/* في globals.css */
-:root {
-  --ring: 0 0% 0%; /* تغيير لون الـ ring للأسود */
-}
-
-/* أو إضافة هذا الكود */
+/* ============================================
+   ستايلات Radix Select (مخصصة)
+   ============================================ */
 [data-radix-select-content] [data-state="checked"] {
   background-color: #e5e7eb !important;
   color: black !important;
 }
 
-/* status colors */
-.status-pending {
-  background-color: #A0AEC03D;
-  color: #A0AEC0;
+/* ============================================
+   Padding للصفحات
+   ============================================ */
+.page-with-padding {
+  padding-top: 1rem;
 }
-.status-processing {
-  background-color: #ED89363D;
-  color: #ED8936;
-}
-.status-ready {
-  background-color: #9F7AEA3D;
-  color: #9F7AEA;
-}
-.status-delivering {
-  background-color: #F6AD553D;
-  color: #F6AD55;
-}
-.status-delivered {
-  background-color: #48BB783D;
-  color: #48BB78;
-}
-.status-cancelled {
-  background-color: #F565653D;
-  color: #F56565;
-}
-
-
-
-
-
-
-@keyframes slideIn {
-  from {
-    transform: translateX(100%);
-  }
-  to {
-    transform: translateX(0);
+@media (min-width: 1024px) {
+  .page-with-padding {
+    padding-top: 2rem;
   }
 }
 
-@keyframes slideOut {
-  from {
-    transform: translateX(0);
+/* ============================================
+   ستايلات مخصصة للشاشات الصغيرة
+   ============================================ */
+@media (max-width: 640px) {
+  .custom-width-192 {
+    width: 150px;
+    height: 150px;
   }
-  to {
-    transform: translateX(100%);
-  }
 }
 
-.animate-slide-in {
-  animation: slideIn 0.3s ease-out forwards;
+/* ============================================
+   ستايلات إضافية للتحكم بالألوان الديناميكية
+   ============================================ */
+
+/* Hover Effects مع الألوان الديناميكية */
+.hover-bg-primary:hover {
+  background-color: var(--main-color) !important;
+  color: var(--white) !important;
+}
+.hover-bg-secondary:hover {
+  background-color: var(--secondary-color) !important;
+  color: var(--white) !important;
+}
+.hover-text-primary:hover {
+  color: var(--main-color) !important;
+}
+.hover-text-secondary:hover {
+  color: var(--secondary-color) !important;
+}
+.hover-border-primary:hover {
+  border-color: var(--main-color) !important;
+}
+.hover-border-secondary:hover {
+  border-color: var(--secondary-color) !important;
 }
 
-.animate-slide-out {
-  animation: slideOut 0.3s ease-out forwards;
+/* Focus Effects */
+.focus-ring-primary:focus {
+  box-shadow: 0 0 0 3px var(--main-color-light);
+  border-color: var(--main-color);
+}
+.focus-ring-secondary:focus {
+  box-shadow: 0 0 0 3px var(--secondary-color-light);
+  border-color: var(--secondary-color);
 }
 
-
-
-/* app/globals.css */
-
- @media (maxWidth: 640px){
-.custom-width-192{
-  width: 150px;
-  height: 150px;
+/* Active States */
+.active-primary:active {
+  background-color: var(--main-color-dark);
 }
- }
+.active-secondary:active {
+  background-color: var(--secondary-color-dark);
+}
+
+/* Selection Color */
+::selection {
+  background-color: var(--main-color);
+  color: var(--white);
+}
+::-moz-selection {
+  background-color: var(--main-color);
+  color: var(--white);
+}

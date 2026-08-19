@@ -867,11 +867,11 @@ export default function CheckoutClient() {
           </div>
           <h2 className="text-2xl font-bold text-gray-800 mb-2">{t('checkout.paymentSuccess')}</h2>
           <p className="text-gray-500 mb-4">
-            {t('checkout.orderNumber')}: <span className="font-bold text-[#23A6F0]">{searchParams.get('order_number')}</span>
+            {t('checkout.orderNumber')}: <span className="font-bold text-primary">{searchParams.get('order_number')}</span>
           </p>
           <p className="text-gray-400 text-sm mb-6">{t('checkout.redirecting')}</p>
           <div className="flex justify-center">
-            <div className="w-8 h-8 border-2 border-[#23A6F0] border-t-transparent rounded-full animate-spin"></div>
+            <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin"></div>
           </div>
         </div>
       </div>
@@ -892,7 +892,7 @@ export default function CheckoutClient() {
         <p className="text-gray-500 mb-4">{t('checkout.emptyCart')}</p>
         <Link
           href="/products"
-          className="bg-[#23A6F0] hover:bg-[#23A6F0] text-white px-6 py-2 rounded-[8px]"
+          className="bg-main hover:bg-main-dark text-white px-6 py-2 rounded-[8px]"
         >
           {t('checkout.shopNow')}
         </Link>
@@ -909,11 +909,11 @@ export default function CheckoutClient() {
             {t('checkout.checkoutTitle')}
           </h1>
           <div className="flex items-center gap-2 text-sm text-gray-500 mb-2">
-            <Link href="/cart" className="hover:text-[#23A6F0] transition">
+            <Link href="/cart" className="hover:text-primary transition">
               {t('checkout.cart')}
             </Link>
             <ChevronRight className="w-4 h-4" />
-            <span className="text-[#23A6F0] font-medium">{t('checkout.checkoutTitle')}</span>
+            <span className="text-primary font-medium">{t('checkout.checkoutTitle')}</span>
           </div>
         </div>
 
@@ -935,7 +935,7 @@ export default function CheckoutClient() {
                     value={formData.fullName}
                     onChange={(e) => handleFormChange({ fullName: e.target.value })}
                     placeholder={t('checkout.fullNamePlaceholder')}
-                    className="w-full px-4 py-2.5 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#23A6F0] transition"
+                    className="w-full px-4 py-2.5 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary transition"
                   />
                 </div>
 
@@ -960,7 +960,7 @@ export default function CheckoutClient() {
                       value={formData.email || ""}
                       onChange={(e) => handleFormChange({ email: e.target.value })}
                       placeholder={t('checkout.emailPlaceholder')}
-                      className="w-full px-4 py-2.5 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#23A6F0] transition"
+                      className="w-full px-4 py-2.5 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary transition"
                     />
                   </div>
                 )}
@@ -1006,7 +1006,7 @@ export default function CheckoutClient() {
               <div className="bg-white rounded-xl p-4 border border-gray-200 mb-2 md:mb-4">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center">
+                    <div className="w-10 h-10 rounded-full bg-main-light flex items-center justify-center">
                       <User className="w-5 h-5 text-pink-600" />
                     </div>
                     <div>
@@ -1020,7 +1020,7 @@ export default function CheckoutClient() {
                     className={`px-4 py-2 rounded-xl text-sm font-medium transition ${
                       createAccount
                         ? "bg-green-100 text-green-700 border border-green-300"
-                        : "bg-[#23A6F0] text-white hover:bg-[#23A6F0]"
+                        : "bg-main text-white hover:bg-main-dark"
                     }`}
                   >
                     {createAccount ? " " + t('checkout.selected') : t('checkout.createAccount')}
@@ -1032,7 +1032,7 @@ export default function CheckoutClient() {
             <button
               onClick={handleSubmit}
               disabled={isSubmitting || isOrderCompleted}
-              className="hidden md:block w-full bg-[#23A6F0] text-white py-3 rounded-xl font-semibold text-lg transition disabled:opacity-50"
+              className="hidden md:block w-full bg-main text-white py-3 rounded-xl font-semibold text-lg transition disabled:opacity-50"
             >
               {isSubmitting ? t('checkout.processing') : t('checkout.confirmOrder')}
             </button>
@@ -1047,7 +1047,7 @@ export default function CheckoutClient() {
             <button
               onClick={handleSubmit}
               disabled={isSubmitting || isOrderCompleted}
-              className="md:hidden block w-full bg-[#23A6F0] text-white py-3 rounded-xl font-semibold text-lg transition disabled:opacity-50"
+              className="md:hidden block w-full bg-main text-white py-3 rounded-xl font-semibold text-lg transition disabled:opacity-50"
             >
               {isSubmitting ? t('checkout.processing') : t('checkout.confirmOrder')}
             </button>
@@ -1178,7 +1178,7 @@ function AccountPopup({
                 value={accountData.name}
                 onChange={(e) => handleChange("name", e.target.value)}
                 placeholder={t('checkout.fullNamePlaceholder')}
-                className={`w-full ps-10 pe-3 py-2.5 border rounded-xl focus:outline-none focus:ring-2 focus:ring-[#23A6F0] transition ${
+                className={`w-full ps-10 pe-3 py-2.5 border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary transition ${
                   errors.name ? "border-red-500" : "border-gray-300"
                 }`}
               />
@@ -1199,7 +1199,7 @@ function AccountPopup({
                 value={accountData.email}
                 onChange={(e) => handleChange("email", e.target.value)}
                 placeholder={t('checkout.emailPlaceholder')}
-                className={`w-full ps-10 pe-3 py-2.5 border rounded-xl focus:outline-none focus:ring-2 focus:ring-[#23A6F0] transition ${
+                className={`w-full ps-10 pe-3 py-2.5 border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary transition ${
                   errors.email ? "border-red-500" : "border-gray-300"
                 }`}
               />
@@ -1220,7 +1220,7 @@ function AccountPopup({
                 value={accountData.phone}
                 onChange={(e) => handleChange("phone", e.target.value)}
                 placeholder="01012345678"
-                className={`w-full ps-10 pe-3 py-2.5 border rounded-xl focus:outline-none focus:ring-2 focus:ring-[#23A6F0] transition ${
+                className={`w-full ps-10 pe-3 py-2.5 border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary transition ${
                   errors.phone ? "border-red-500" : "border-gray-300"
                 }`}
               />
@@ -1242,7 +1242,7 @@ function AccountPopup({
                 value={accountData.password}
                 onChange={(e) => handleChange("password", e.target.value)}
                 placeholder="••••••••"
-                className={`w-full ps-10 pe-10 py-2.5 border rounded-xl focus:outline-none focus:ring-2 focus:ring-[#23A6F0] transition ${
+                className={`w-full ps-10 pe-10 py-2.5 border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary transition ${
                   errors.password ? "border-red-500" : "border-gray-300"
                 }`}
               />
@@ -1271,7 +1271,7 @@ function AccountPopup({
                 value={accountData.password_confirmation}
                 onChange={(e) => handleChange("password_confirmation", e.target.value)}
                 placeholder="••••••••"
-                className={`w-full ps-10 pe-10 py-2.5 border rounded-xl focus:outline-none focus:ring-2 focus:ring-[#23A6F0] transition ${
+                className={`w-full ps-10 pe-10 py-2.5 border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary transition ${
                   errors.password_confirmation ? "border-red-500" : "border-gray-300"
                 }`}
               />
@@ -1298,7 +1298,7 @@ function AccountPopup({
           </button>
           <button
             onClick={onConfirm}
-            className="flex-1 bg-[#23A6F0] text-white py-2.5 rounded-xl font-medium hover:bg-[#23A6F0] transition"
+            className="flex-1 bg-main text-white py-2.5 rounded-xl font-medium hover:bg-main-dark transition"
           >
             {t('checkout.createAccount')}
           </button>
@@ -1377,7 +1377,7 @@ function SuccessPopup({
           {!isGuest && (
             <button
               onClick={onGoToOrders}
-              className="w-full bg-[#23A6F0] text-white py-2 rounded-xl font-medium hover:bg-[#23A6F0] transition"
+              className="w-full bg-main text-white py-2 rounded-xl font-medium hover:bg-main-dark transition"
             >
               {t('checkout.myOrders')}
             </button>

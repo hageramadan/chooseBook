@@ -18,7 +18,7 @@ export function LoadingSpinner({ size = 'md', text = 'جاري التحميل', 
     <div className="flex flex-col items-center justify-center gap-4">
       <div className={`relative ${sizeClasses[size]}`}>
         {/* Spinner دائري متحرك - أحمر وأسود */}
-        <div className={`${sizeClasses[size]} border-4 border-gray-300 border-t-[#23A6F0] rounded-full animate-spin`}></div>
+        <div className={`${sizeClasses[size]} border-4 border-gray-300 border-t-primary rounded-full animate-spin`}></div>
         
         {/* Spinner داخلي - أسود */}
         <div className={`absolute inset-0 ${sizeClasses[size]} border-4 border-transparent border-b-black rounded-full animate-spin`} style={{ animationDirection: 'reverse', animationDuration: '0.8s' }}></div>
@@ -28,9 +28,9 @@ export function LoadingSpinner({ size = 'md', text = 'جاري التحميل', 
         <div className="text-center">
           <p className="text-gray-700 font-medium">{text}</p>
           <div className="flex justify-center gap-1 mt-2">
-            <div className="w-1.5 h-1.5 bg-[#23A6F0] rounded-full animate-bounce" style={{ animationDelay: '0s' }}></div>
+            <div className="w-1.5 h-1.5 bg-main rounded-full animate-bounce" style={{ animationDelay: '0s' }}></div>
             <div className="w-1.5 h-1.5 bg-black rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
-            <div className="w-1.5 h-1.5 bg-[#23A6F0] rounded-full animate-bounce" style={{ animationDelay: '0.4s' }}></div>
+            <div className="w-1.5 h-1.5 bg-main rounded-full animate-bounce" style={{ animationDelay: '0.4s' }}></div>
           </div>
         </div>
       )}

@@ -115,7 +115,7 @@ export default function ForgotWithPhone() {
                       value={digit}
                       onChange={(e) => handleOtpChange(index, e.target.value)}
                       onKeyDown={(e) => handleKeyDown(index, e)}
-                      className="w-12 h-12 md:w-14 md:h-14 text-center text-xl font-bold border-2 border-gray-300 rounded-xl focus:border-[#23A6F0] focus:ring-2 focus:ring-[#23A6F0]/20 outline-none transition-all"
+                      className="w-12 h-12 md:w-14 md:h-14 text-center text-xl font-bold border-2 border-gray-300 rounded-xl focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
                       maxLength={1}
                       
                     />
@@ -127,7 +127,7 @@ export default function ForgotWithPhone() {
                   {!canResend ? (
                     <p className="text-gray-500 text-sm">
                       لم تستلم الرمز؟{" "}
-                      <span className="text-[#23A6F0] font-medium">
+                      <span className="text-primary font-medium">
                         إعادة الإرسال ({timeLeft.toString().padStart(2, "0")})
                       </span>
                     </p>
@@ -135,7 +135,7 @@ export default function ForgotWithPhone() {
                     <button
                       type="button"
                       onClick={handleResendCode}
-                      className="text-[#23A6F0] font-medium hover:underline"
+                      className="text-primary font-medium hover:underline"
                     >
                       لم تستلم الرمز؟ إعادة إرسال
                     </button>

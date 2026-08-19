@@ -93,13 +93,13 @@ export default function ContactForm() {
       </h2>
 
       {isSubmitted && (
-        <div className="mb-6 p-4 bg-blue-50 border border-green-200 rounded-[8px] text-green-700 text-sm">
+        <div className="mb-6 p-4 bg-main-light border border-green-200 rounded-[8px] text-green-700 text-sm">
           {t('contact.success')}
         </div>
       )}
 
       {errorMessage && (
-        <div className="mb-6 p-4 bg-blue-50 border border-red-200 rounded-[8px] text-red-700 text-sm">
+        <div className="mb-6 p-4 bg-main-light border border-red-200 rounded-[8px] text-red-700 text-sm">
           {errorMessage}
         </div>
       )}

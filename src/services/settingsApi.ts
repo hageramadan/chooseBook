@@ -2,6 +2,7 @@
 
 import { getHeaders } from "./api";
 
+// إضافة الخصائص الجديدة للـ Interface
 interface SettingsData {
   setting: {
     name: string;
@@ -26,6 +27,9 @@ interface SettingsData {
       meta_description: string | null;
     };
   };
+  // إضافة الخصائص الجديدة على مستوى البيانات
+  mainColor?: string;
+  secondaryColor?: string;
 }
 
 interface SettingsResponse {
@@ -35,12 +39,11 @@ interface SettingsResponse {
   data: SettingsData;
 }
 
-// ✅ إضافة معامل اللغة
 export async function getSettings(lang?: string): Promise<SettingsData> {
   try {
     const response = await fetch(`https://admin.ekhtarktabak.com/api/settings`, {
       method: 'GET',
-      headers: getHeaders(false, lang), // ✅ تمرير اللغة
+      headers: getHeaders(false, lang),
     });
 
     if (!response.ok) {
@@ -53,7 +56,12 @@ export async function getSettings(lang?: string): Promise<SettingsData> {
       throw new Error(data.message || 'Failed to fetch settings');
     }
 
-    return data.data;
+    // إرجاع البيانات مع الخصائص الإضافية
+    return {
+      ...data.data,
+      mainColor: data.data.setting.main_color || '#246487',
+      secondaryColor: data.data.setting.secondary_color || '#D56A2D',
+    };
   } catch (error) {
     console.error('Error fetching settings:', error);
     throw error;

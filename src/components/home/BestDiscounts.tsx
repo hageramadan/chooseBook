@@ -337,7 +337,7 @@ export function BestDiscounts({ onLoad }: BestDiscountsProps) {
             <div className="flex flex-col items-center gap-4">
               <div className="relative">
                 <div className="w-12 h-12 border-4 border-gray-200 rounded-full"></div>
-                <div className="absolute top-0 left-0 w-12 h-12 border-4 border-[#23A6F0] border-t-transparent rounded-full animate-spin"></div>
+                <div className="absolute top-0 left-0 w-12 h-12 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
               </div>
             </div>
           </div>
@@ -354,7 +354,7 @@ export function BestDiscounts({ onLoad }: BestDiscountsProps) {
             <div className="flex flex-col items-center gap-4">
               <div className="relative">
                 <div className="w-12 h-12 border-4 border-gray-200 rounded-full"></div>
-                <div className="absolute top-0 left-0 w-12 h-12 border-4 border-[#23A6F0] border-t-transparent rounded-full animate-spin"></div>
+                <div className="absolute top-0 left-0 w-12 h-12 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
               </div>
             </div>
           </div>
@@ -390,7 +390,7 @@ export function BestDiscounts({ onLoad }: BestDiscountsProps) {
           </div>
           <Link
             href="/products"
-            className="text-[#23A6F0] text-xs lg:text-sm font-bold hover:underline transition-all duration-300"
+            className="text-primary text-xs lg:text-sm font-bold hover:underline transition-all duration-300"
           >
             {t.viewMore}
           </Link>
@@ -400,7 +400,7 @@ export function BestDiscounts({ onLoad }: BestDiscountsProps) {
         {isLoadingMore && (
           <div className="flex justify-center py-4 mb-4">
             <div className="flex items-center gap-2">
-              <div className="w-6 h-6 border-2 border-gray-300 border-t-[#23A6F0] rounded-full animate-spin"></div>
+              <div className="w-6 h-6 border-2 border-gray-300 border-t-primary rounded-full animate-spin"></div>
               <span className="text-gray-500 text-sm">{t.loadingMore}</span>
             </div>
           </div>
@@ -448,8 +448,8 @@ export function BestDiscounts({ onLoad }: BestDiscountsProps) {
               className="px-6 py-2 text-sm font-semibold transition-all duration-300 hover:scale-105"
               style={{
                 backgroundColor: "transparent",
-                color: "#23A6F0",
-                border: "2px solid #23A6F0",
+                color:  'var(--main-color)',
+                border: "2px solid  'var(--main-color)'",
                 borderRadius: "8px",
               }}
             >

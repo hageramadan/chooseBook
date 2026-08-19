@@ -62,7 +62,7 @@ export default function WalletPage() {
     return (
       <div className="min-h-screen bg-gradient-to-l from-[#bdcbf12a] to-[#feecea3b] page-with-padding flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#23A6F0] mx-auto mb-4"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
           <p className="text-gray-600">{t('account.loadingWallet')}</p>
         </div>
       </div>
@@ -77,17 +77,17 @@ export default function WalletPage() {
           <div className="mb-6">
             <Link
               href="/account"
-              className="inline-flex items-center gap-2 text-gray-600 hover:text-[#23A6F0] transition mb-4"
+              className="inline-flex items-center gap-2 text-gray-600 hover:text-primary transition mb-4"
             >
               <FaChevronRight className="w-4 h-4" />
               <span>{t('account.backToAccount')}</span>
             </Link>
           </div>
-          <div className="bg-blue-50 border border-red-200 rounded-2xl p-6 text-center">
+          <div className="bg-main-light border border-red-200 rounded-2xl p-6 text-center">
             <p className="text-red-600 mb-4">{error}</p>
             <button
               onClick={fetchWalletBalance}
-              className="px-4 py-2 bg-[#23A6F0] text-white rounded-[8px] hover:bg-[#23A6F0] transition"
+              className="px-4 py-2 bg-main text-white rounded-[8px] hover:bg-main-dark transition"
             >
               {t('account.retry')}
             </button>
@@ -105,7 +105,7 @@ export default function WalletPage() {
         <div className="mb-6">
           <Link
             href="/account"
-            className="inline-flex items-center gap-2 text-gray-600 hover:text-[#23A6F0] transition mb-4"
+            className="inline-flex items-center gap-2 text-gray-600 hover:text-primary transition mb-4"
           >
             <FaChevronRight className="w-4 h-4" />
             <span>{t('account.backToAccount')}</span>

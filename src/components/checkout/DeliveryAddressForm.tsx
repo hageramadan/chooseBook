@@ -453,7 +453,7 @@ export default function DeliveryAddressForm({
           <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                {t('checkout.governorate')} <span className="text-[#23A6F0]">*</span>
+                {t('checkout.governorate')} <span className="text-primary">*</span>
               </label>
               <Select
                 value={addressData.governorate}
@@ -473,7 +473,7 @@ export default function DeliveryAddressForm({
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                {t('checkout.city')} <span className="text-[#23A6F0]">*</span>
+                {t('checkout.city')} <span className="text-primary">*</span>
               </label>
               <Select
                 value={addressData.city}
@@ -559,7 +559,7 @@ export default function DeliveryAddressForm({
               <button
                 onClick={handleManualSave}
                 disabled={isSavingAddress || !addressData.governorate || !addressData.city}
-                className="w-full flex items-center justify-center gap-2 px-4 py-3 text-white rounded-[8px] bg-[#23A6F0] hover:bg-[#23A6F0] transition disabled:opacity-50"
+                className="w-full flex items-center justify-center gap-2 px-4 py-3 text-white rounded-[8px] bg-main hover:bg-main-dark transition disabled:opacity-50"
               >
                 {isSavingAddress ? (
                   <>
@@ -578,7 +578,7 @@ export default function DeliveryAddressForm({
 
           {saveError && (
             <div className="pt-2 mt-2">
-              <div className="p-3 bg-blue-50 rounded-[8px] border border-red-200">
+              <div className="p-3 bg-main-light rounded-[8px] border border-red-200">
                 <p className="text-sm font-medium text-red-800">{saveError}</p>
               </div>
             </div>
@@ -586,7 +586,7 @@ export default function DeliveryAddressForm({
 
           {!isGuest && addressSaved && (
             <div className="pt-2 mt-2">
-              <div className="p-3 bg-blue-50 rounded-[8px] border border-blue-200">
+              <div className="p-3 bg-main-light rounded-[8px] border border-blue-200">
                 <p className="text-sm font-medium text-blue-800">{t('checkout.addressSaved')}</p>
               </div>
             </div>
@@ -630,7 +630,7 @@ export default function DeliveryAddressForm({
                 ) : (
                   <>
                     {selectedAddressDetails ? (
-                      <div className="p-4 bg-white rounded-[8px] border-2 border-[#23A6F0] relative">
+                      <div className="p-4 bg-white rounded-[8px] border-2 border-primary relative">
                         <button
                           onClick={clearSelectedAddress}
                           className="absolute top-2 left-2 p-1 hover:bg-gray-100 rounded-full transition"
@@ -659,7 +659,7 @@ export default function DeliveryAddressForm({
                           key={address.id}
                           className={`flex items-start gap-3 p-3 rounded-[8px] border cursor-pointer transition-all ${
                             selectedSavedAddressId === address.id
-                              ? "border-[#23A6F0] bg-blue-50"
+                              ? "border-primary bg-main-light"
                               : "border-gray-200 bg-white hover:border-gray-300"
                           }`}
                           onClick={() => handleSelectSavedAddress(address.id)}
@@ -669,7 +669,7 @@ export default function DeliveryAddressForm({
                             name="savedAddress"
                             checked={selectedSavedAddressId === address.id}
                             onChange={() => handleSelectSavedAddress(address.id)}
-                            className="mt-0.5 w-4 h-4 text-[#23A6F0]"
+                            className="mt-0.5 w-4 h-4 text-primary"
                           />
                           <div className="flex-1">
                             <p className="font-medium text-gray-800">{address.street}</p>

@@ -55,7 +55,7 @@ export const LoadingScreen = () => {
           {/* شريط التقدم */}
           <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
             <div
-              className="h-full bg-[#23A6F0] rounded-full transition-all duration-300"
+              className="h-full bg-main rounded-full transition-all duration-300"
               style={{ width: `${progress}%` }}
             />
           </div>

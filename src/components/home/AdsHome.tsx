@@ -247,14 +247,14 @@ export function AdsHome({ onLoad }: AdsHomeProps) {
                 className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white rounded-full p-1 md:p-2 shadow-lg transition-all"
                 aria-label={t.previous}
               >
-                <FaArrowLeft className="h-4 w-4 md:h-6 md:w-6 text-[#23A6F0] rotate-180" />
+                <FaArrowLeft className="h-4 w-4 md:h-6 md:w-6 text-primary rotate-180" />
               </button>
               <button
                 onClick={nextAd}
                 className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-white rounded-full p-1 md:p-2 shadow-lg transition-all"
                 aria-label={t.next}
               >
-                <FaArrowLeft className="h-4 w-4 md:h-6 md:w-6 text-[#23A6F0]" />
+                <FaArrowLeft className="h-4 w-4 md:h-6 md:w-6 text-primary" />
               </button>
             </>
           )}
@@ -314,7 +314,7 @@ export function AdsHome({ onLoad }: AdsHomeProps) {
               asChild
               aria-label='buy now'
               className="w-fit md:w-[180px] md:h-[60px] animate-in text-[12px] md:text-[16px] font-bold fade-in slide-in-from-bottom-5 duration-700 delay-200 rounded-xl mt-2"
-              style={{ backgroundColor: '#23A6F0' }}
+              style={{ backgroundColor: 'var(--main-color)' }}
             >
               <Link 
                 href={currentAd.link || "/products"} 
@@ -352,7 +352,7 @@ export function AdsHome({ onLoad }: AdsHomeProps) {
                 onClick={() => goToAd(index)}
                 className={`transition-all duration-300 rounded-full ${
                   currentAdIndex === index
-                    ? 'w-6 h-2 bg-[#23A6F0]'
+                    ? 'w-6 h-2 bg-main'
                     : 'w-2 h-2 bg-gray-300 hover:bg-gray-400'
                 }`}
                 aria-label={`${t.goToAd} ${index + 1}`}

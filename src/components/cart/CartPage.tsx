@@ -242,9 +242,9 @@ const PageHeader = ({ title, itemCount, t }: { title: string; itemCount: number;
   <div className="mb-8">
     <h1 className="text-lg lg:text-xl font-bold text-gray-800">{title}</h1>
     <div className="flex items-center gap-2 mt-2 text-sm text-gray-500">
-      <Link href="/" className="hover:text-[#23A6F0]">{t('cartPage.home')}</Link>
+      <Link href="/" className="hover:text-primary">{t('cartPage.home')}</Link>
       <ChevronRight className="w-4 h-4" />
-      <span className="text-[#23A6F0]">{title}</span>
+      <span className="text-primary">{title}</span>
       <span className="text-gray-400">({itemCount} {t('cartPage.products')})</span>
     </div>
   </div>

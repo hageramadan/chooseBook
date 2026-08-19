@@ -290,7 +290,7 @@ const ProductDetailsLarge = ({
   return (
     <div>
       <Link href={`/product/${id}`}>
-        <h1 className="text-lg font-semibold text-gray-800 hover:text-[#23A6F0] transition">
+        <h1 className="text-lg font-semibold text-gray-800 hover:text-primary transition">
           {name}
         </h1>
       </Link>
@@ -367,7 +367,7 @@ const ProductPriceLarge = ({
       </div>
     </div>
     <div className="flex items-center gap-0.5">
-      <span className="text-lg font-bold text-[#23A6F0]">
+      <span className="text-lg font-bold text-primary">
         {totalPrice.toLocaleString()} {currencySymbol} {/* ✅ استخدام رمز العملة */}
       </span>
       <span className="text-xs text-gray-400">({t('cart.total')})</span>
@@ -388,7 +388,7 @@ const QuantityControlLarge = ({
     <button
       onClick={() => onUpdateQuantity(id, quantity - 1)}
       disabled={quantity <= 1}
-      className="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-[#23A6F0] transition rounded-full hover:bg-white disabled:opacity-50 disabled:cursor-not-allowed"
+      className="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-primary transition rounded-full hover:bg-white disabled:opacity-50 disabled:cursor-not-allowed"
     >
       <FaMinus className="w-3 h-3" />
     </button>
@@ -397,7 +397,7 @@ const QuantityControlLarge = ({
     </span>
     <button
       onClick={() => onUpdateQuantity(id, quantity + 1)}
-      className="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-[#23A6F0] transition rounded-full hover:bg-white"
+      className="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-primary transition rounded-full hover:bg-white"
     >
       <FaPlus className="w-3 h-3" />
     </button>
@@ -501,7 +501,7 @@ const ProductDetailsMobile = ({
   return (
     <div className="flex-1">
       <Link href={`/product/${id}`}>
-        <h1 className="text-sm font-semibold text-gray-800 hover:text-[#23A6F0] transition line-clamp-1">
+        <h1 className="text-sm font-semibold text-gray-800 hover:text-primary transition line-clamp-1">
           {name}
         </h1>
       </Link>
@@ -580,7 +580,7 @@ const ProductPriceMobile = ({
         {price.toLocaleString()} {currencySymbol} / {t('cart.perItem')} {/* ✅ استخدام رمز العملة */}
       </div>
     </div>
-    <span className="text-sm font-bold text-[#23A6F0]">
+    <span className="text-sm font-bold text-primary">
       {totalPrice.toLocaleString()} {currencySymbol} {/* ✅ استخدام رمز العملة */}
     </span>
   </div>
@@ -600,7 +600,7 @@ const QuantityControlMobile = ({
       onClick={() => onUpdateQuantity(id, quantity - 1)}
       disabled={quantity <= 1}
       className={`w-6 h-6 flex items-center justify-center rounded-full transition ${
-        quantity <= 1 ? "text-gray-300" : "text-gray-600 hover:text-[#23A6F0]"
+        quantity <= 1 ? "text-gray-300" : "text-gray-600 hover:text-primary"
       }`}
     >
       <FaMinus className="w-2 h-2" />
@@ -610,7 +610,7 @@ const QuantityControlMobile = ({
     </span>
     <button
       onClick={() => onUpdateQuantity(id, quantity + 1)}
-      className="w-6 h-6 flex items-center justify-center text-gray-600 hover:text-[#23A6F0] transition rounded-full"
+      className="w-6 h-6 flex items-center justify-center text-gray-600 hover:text-primary transition rounded-full"
     >
       <FaPlus className="w-2 h-2" />
     </button>
@@ -635,7 +635,7 @@ const ActionButtonsMobile = ({
       onClick={onToggleFavorite}
       disabled={isMutating}
       className={`flex items-center gap-0.5 text-xs transition disabled:opacity-50 ${
-        isSaved ? "text-[#23A6F0]" : "text-gray-400 hover:text-[#23A6F0]"
+        isSaved ? "text-primary" : "text-gray-400 hover:text-primary"
       }`}
     >
       <Heart className={`w-3.5 h-3.5 ${isSaved ? "fill-current" : ""}`} />

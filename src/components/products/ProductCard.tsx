@@ -270,7 +270,7 @@ export function ProductCard({
             aria-pressed={localFavorite}
           >
             {isLocalMutating ? (
-              <div className="w-4 h-4 border-2 border-[#23A6F0] border-t-transparent rounded-full animate-spin" />
+              <div className="w-4 h-4 border-2 border-primary border-t-transparent rounded-full animate-spin" />
             ) : (
               <Heart className="h-4 w-4" fill={localFavorite ? '#ef4444' : 'none'} />
             )}
@@ -279,7 +279,7 @@ export function ProductCard({
           {/* Best Seller Badge */}
           {isBestSeller && (
             <div className="absolute top-2 right-4 z-10">
-              <p className="text-[9px] sm:text-xs font-bold text-white bg-[#23A6F0] px-1.5 py-0.5 sm:px-2 sm:py-1 rounded">
+              <p className="text-[9px] sm:text-xs font-bold text-white bg-main px-1.5 py-0.5 sm:px-2 sm:py-1 rounded">
                 {t.bestSeller}
               </p>
             </div>
@@ -297,7 +297,7 @@ export function ProductCard({
           <div className="relative w-full aspect-square">
             {!imageLoaded && (
               <div className="absolute inset-0 flex items-center justify-center bg-gray-100 rounded-lg">
-                <div className="w-8 h-8 border-4 border-[#23A6F0] border-t-transparent rounded-full animate-spin" />
+                <div className="w-8 h-8 border-4 border-primary border-t-transparent rounded-full animate-spin" />
               </div>
             )}
             <Image
@@ -328,7 +328,7 @@ export function ProductCard({
               {/* Eye Icon - Quick View */}
               <button
                 onClick={handleQuickView}
-                className="bg-white rounded-full p-2 shadow-lg hover:bg-[#23A6F0] transition-all duration-200 hover:scale-110"
+                className="bg-white rounded-full p-2 shadow-lg hover:bg-main-dark transition-all duration-200 hover:scale-110"
                 style={{ color: '#112B40' }}
                 aria-label="معاينة سريعة"
               >
@@ -339,12 +339,12 @@ export function ProductCard({
               <button
                 onClick={handleAddToCart}
                 disabled={isOutOfStock || isAddingToCart || cartLoading}
-                className="bg-white rounded-full p-2 shadow-lg hover:bg-[#23A6F0] transition-all duration-200 hover:scale-110"
+                className="bg-white rounded-full p-2 shadow-lg hover:bg-main-dark transition-all duration-200 hover:scale-110"
                 style={{ color: isOutOfStock ? '#999' : '#112B40' }}
                 aria-label={isOutOfStock ? t.outOfStock : t.addToCart}
               >
                 {isAddingToCart || cartLoading ? (
-                  <div className="h-4 w-4 sm:h-5 sm:w-5 border-2 border-[#23A6F0] border-t-transparent rounded-full animate-spin" />
+                  <div className="h-4 w-4 sm:h-5 sm:w-5 border-2 border-primary border-t-transparent rounded-full animate-spin" />
                 ) : (
                   <ShoppingCart className="h-4 w-4 sm:h-5 sm:w-5 hover:text-white" />
                 )}
@@ -354,12 +354,12 @@ export function ProductCard({
               <button
                 onClick={handleFavoriteClick}
                 disabled={isLocalMutating || isLoading}
-                className="bg-white md:block hidden rounded-full p-2 shadow-lg hover:bg-[#23A6F0] transition-all duration-200 hover:scale-110"
+                className="bg-white md:block hidden rounded-full p-2 shadow-lg hover:bg-main-dark transition-all duration-200 hover:scale-110"
                 style={{ color: localFavorite ? '#ef4444' : '#112B40' }}
                 aria-label={localFavorite ? t.removeFromFavorites : t.addToFavorites}
               >
                 {isLocalMutating ? (
-                  <div className="h-4 w-4 sm:h-5 sm:w-5 border-2 border-[#23A6F0] border-t-transparent rounded-full animate-spin" />
+                  <div className="h-4 w-4 sm:h-5 sm:w-5 border-2 border-primary border-t-transparent rounded-full animate-spin" />
                 ) : (
                   <Heart className="h-4 w-4 sm:h-5 sm:w-5 hover:text-white" fill={localFavorite ? '#ef4444' : 'none'} />
                 )}
@@ -391,7 +391,7 @@ export function ProductCard({
           <div className="flex items-center gap-2">
             {originalPrice && originalPrice > price ? (
               <>
-                <span className="text-lg font-bold relative" style={{ color: '#23A6F0' }}>
+                <span className="text-lg font-bold relative text-primary" >
                   {price.toLocaleString()} <span className="text-xs absolute top-1 me-1">
                     {currencyLoading ? '...' : currency || 'EGP'}
                   </span>
@@ -401,7 +401,7 @@ export function ProductCard({
                 </span>
               </>
             ) : (
-              <span className="text-lg font-bold relative" style={{ color: '#23A6F0' }}>
+              <span className="text-lg font-bold relative text-primary" >
                 {price.toLocaleString()} <span className="text-xs absolute top-1 me-1">
                   {currencyLoading ? '...' : currency || 'EGP'}
                 </span>

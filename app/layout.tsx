@@ -1,3 +1,4 @@
+// app/layout.tsx
 import type { Metadata } from "next";
 import { Almarai } from "next/font/google";
 import "./globals.css";
@@ -11,6 +12,8 @@ import { SubNavbar } from "@/components/layout/SubNavbar";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import { getSettings } from "@/services/settingsApi";
 import { CurrencyProvider } from "@/contexts/CurrencyContext";
+import { ThemeProvider } from "@/contexts/ThemeContext"; // ✅ إضافة
+import { ThemeStyles } from "@/components/ThemeStyles"; // ✅ إضافة
 
 const almarai = Almarai({
   subsets: ["arabic"],
@@ -18,13 +21,6 @@ const almarai = Almarai({
   variable: "--font-almarai",
 });
 
-// export const metadata: Metadata = {
-//   title: "متجري - منتجات مميزة",
-//   description: "أفضل المنتجات في مكان واحد",
-// };
-const defaultTitle = "متجر فاشون | أحدث صيحات الموضة والأزياء العصرية أونلاين";
-const defaultDescription =
-  "تسوقي وتسوّق أحدث تشكيلات الملابس والأزياء العصرية بجودة عالية وأفضل الأسعار. شحن سريع، عروض متجددة، وتجربة تسوق مرنة تناسب إطلالتك اليومية.";
 
 // دالة لجلب البيانات ديناميكياً
 async function getMetadata(): Promise<{ title: string; description: string }> {
@@ -40,8 +36,8 @@ async function getMetadata(): Promise<{ title: string; description: string }> {
     console.error("Failed to fetch settings for metadata:", error);
     // في حالة الخطأ، استخدام القيم الافتراضية
     return {
-      title: defaultTitle,
-      description: defaultDescription,
+      title: '',
+      description: '',
     };
   }
 }
@@ -51,18 +47,18 @@ export async function generateMetadata(): Promise<Metadata> {
   const { title, description } = await getMetadata();
 
   return {
-    title: title,
-    description: description,
+    title: title || '',
+    description: description || '',
     openGraph: {
-      title: title,
-      description: description,
+      title: title || '',
+      description: description || '',
       type: "website",
       locale: "ar_EG",
     },
     twitter: {
       card: "summary_large_image",
-      title: title,
-      description: description,
+      title: title || '',
+      description: description || '',
     },
     icons: {
       icon: [
@@ -80,24 +76,28 @@ export default function RootLayout({
   return (
     <html>
       <body className={almarai.className}>
-        <LanguageProvider>
-          <CurrencyProvider>
-            <CartProvider>
-              <AuthProvider>
-                <FavoritesProvider>
-                  <SubNavbar />
-                  <Navbar />
-                  <main>{children}</main>
-                  <Toaster
-                    position="top-center" // مكان ظهور الإشعار
-                    reverseOrder={false}
-                  />
-                  <Footer />
-                </FavoritesProvider>
-              </AuthProvider>
-            </CartProvider>
-          </CurrencyProvider>
-        </LanguageProvider>
+        <ThemeProvider>
+          <ThemeStyles />
+          
+          <LanguageProvider>
+            <CurrencyProvider>
+              <CartProvider>
+                <AuthProvider>
+                  <FavoritesProvider>
+                    <SubNavbar />
+                    <Navbar />
+                    <main>{children}</main>
+                    <Toaster
+                      position="top-center"
+                      reverseOrder={false}
+                    />
+                    <Footer />
+                  </FavoritesProvider>
+                </AuthProvider>
+              </CartProvider>
+            </CurrencyProvider>
+          </LanguageProvider>
+        </ThemeProvider>
       </body>
     </html>
   );
