@@ -352,12 +352,15 @@ export default function CheckoutClient() {
     }
     
     const total = cart?.total_amount || 0;
-
+  const couponDiscount = cart?.coupon_discount || 0;
+    const couponCode = cart?.applied_coupon_code || "";
     return {
       subtotal,
       discount,
       deliveryFee,
       total,
+       couponDiscount, // ✅ إضافة خصم الكوبون
+      couponCode,
     };
   }, [cart, formData.deliveryMethod, selectedCityId]);
 

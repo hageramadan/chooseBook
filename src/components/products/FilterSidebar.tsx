@@ -89,7 +89,7 @@ interface FiltersSelectionState {
 
 const MIN_PRICE = 0;
 const MAX_PRICE = 100_000;
-const DEFAULT_PRICE_RANGE: PriceRange = [100, 100000];
+const DEFAULT_PRICE_RANGE: PriceRange = [90, 100000];
 
 // Colors that need a different selection ring because they blend into a
 // white background (kept as Sets for O(1) lookups and easy extension).
