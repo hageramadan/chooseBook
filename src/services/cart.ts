@@ -21,6 +21,7 @@ export interface CartProduct {
   id: number;
   type: string;
   is_active: boolean;
+  is_most_selling:boolean;
   name: string;
   avg_rating: number;
   total_reviews: number;

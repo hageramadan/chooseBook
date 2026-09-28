@@ -125,7 +125,7 @@ const transformProduct = (product: ProductData): Product => {
     colors: colors,
     rating: product.avg_rating || 0,
     reviewsCount: product.total_reviews || 0,
-    isBestSeller: product.is_active,
+    isBestSeller: product.is_most_selling,
     hasVariants: hasVariants,
     variants: variants,
     variantId: variantId,

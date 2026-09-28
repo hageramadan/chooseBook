@@ -3,6 +3,7 @@ export interface ProductData {
   id: number;
   type: string;
   is_active: boolean;
+  is_most_selling:boolean;
   name: string;
   description: string;
   category: {
